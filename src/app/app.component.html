@@ -10,24 +10,25 @@
 
 <body>
     <div class="container">
-        <h1 class="h2">Angular 14 &amp; Chart.js 4</h1>
+        <h1 class="h4">Angular 14 &amp; Chart.js 4</h1>
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <p>This is a reusable bar chart component. To use, pass in the ID, aria label and config.</p>
+                <p>This is bar chart is a <b>reusable component</b>. To use it, pass in the ID, aria-label and options.
+                </p>
             </div>
             <div class="col-sm-12 col-md-6">
-                <app-bar-chart [id]="barChartId" [chartConfig]="barChartConfig" [ariaLabel]="barChartAriaLabel">
+                <app-bar-chart [id]="barChartID" [chartConfig]="barchartConfig" [ariaLabel]="barChartAriaLabel">
                 </app-bar-chart>
             </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <app-bar-chart [id]="lineChartId" [chartConfig]="lineChartConfig" [ariaLabel]="lineChartAriaLabel">
+                <app-bar-chart [id]="lineChartID" [chartConfig]="linechartConfig" [ariaLabel]="lineChartAriaLabel">
                 </app-bar-chart>
             </div>
             <div class="col-sm-12 col-md-6">
-                <p>This is the same component except the id, aria label, and config is different.</p>
+                <p>This is the same component except the ID, aria-label, and options are different.</p>
             </div>
         </div>
     </div>
