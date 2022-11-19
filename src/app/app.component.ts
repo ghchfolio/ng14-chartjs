@@ -23,7 +23,7 @@ export class AppComponent {
                         '467', '576', '572', '79',
                         '92', '574', '573', '576'
                     ],
-                    backgroundColor: this.createDiagonalPattern('green'),
+                    backgroundColor: this.createDiagonalPattern('red', 'pink'),
                     borderWidth: 2,
                     borderColor: 'red'
                 },
@@ -80,13 +80,19 @@ export class AppComponent {
         }
     }
 
-    private createDiagonalPattern(color = 'gray') {
-        const shape = document.createElement('canvas');
-        shape.width = 10;
-        shape.height = 10;
-        let c = shape.getContext('2d');
+    // takes in a fgColor and bgColor, creates stripes
+    // and applies it to the bar
+    private createDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
+        const pattern = document.createElement('canvas');
+        pattern.width = 10;
+        pattern.height = 10;
+
+        let c = pattern.getContext('2d');
+
         if (c !== null) {
-            c.strokeStyle = color;
+            c.fillStyle = bgColor;
+            c.fillRect(0, 0, pattern.width, pattern.height);
+            c.strokeStyle = fgColor;
             c.beginPath();
             c.moveTo(2, 0);
             c.lineTo(10, 8);
@@ -95,8 +101,9 @@ export class AppComponent {
             c.moveTo(0, 8);
             c.lineTo(2, 10);
             c.stroke();
-            return c.createPattern(shape, 'repeat');
+            return c.createPattern(pattern, 'repeat');
         }
-        return '#000000';
+
+        return 'lightblue';
     }
 }
