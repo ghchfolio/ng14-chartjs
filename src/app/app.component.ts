@@ -9,7 +9,7 @@ export class AppComponent {
 
     barChartID = 'barChart';
     barChartAriaLabel = 'A bar chart';
-    barchartConfig = {
+    barChartConfig = {
         type: 'bar',
         data: {
             labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
