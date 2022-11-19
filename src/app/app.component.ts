@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-    barChartId = 'barChart';
+    barChartID = 'barChart';
     barChartAriaLabel = 'A bar chart';
-    barChartConfig = {
+    barchartConfig = {
         type: 'bar',
         data: {
             labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
@@ -35,12 +35,14 @@ export class AppComponent {
         options: {
             // aspectRatio: 2.5
             // responsive: true
+            maintainAspectRatio: false,
+            // resizeDelay: 250
         }
     }
 
-    lineChartId = 'lineChart';
+    lineChartID = 'lineChart';
     lineChartAriaLabel = 'A line chart';
-    lineChartConfig = {
+    linechartConfig = {
         type: 'line',
         data: {
             labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
@@ -63,6 +65,8 @@ export class AppComponent {
         options: {
             // aspectRatio: 2.5
             // responsive: true
+            maintainAspectRatio: false,
+            resizeDelay: 125
         }
     }
 }

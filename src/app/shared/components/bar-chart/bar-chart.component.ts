@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { Chart } from 'node_modules/chart.js/auto';
 
 @Component({
@@ -6,7 +6,7 @@ import { Chart } from 'node_modules/chart.js/auto';
     templateUrl: './bar-chart.component.html',
     styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent implements OnInit, AfterViewInit {
+export class BarChartComponent implements AfterViewInit {
 
     @Input() id!: string;
     @Input() ariaLabel!: string;
@@ -15,8 +15,6 @@ export class BarChartComponent implements OnInit, AfterViewInit {
     chart: any;
 
     constructor() { }
-
-    ngOnInit(): void { }
 
     ngAfterViewInit() {
         this.createChart();
@@ -28,3 +26,4 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 }
 // https://www.freecodecamp.org/news/how-to-make-bar-and-line-charts-using-chartjs-in-angular/
 // https://www.chartjs.org/docs/latest/
+// https://www.chartjs.org/docs/latest/configuration/responsive.html
