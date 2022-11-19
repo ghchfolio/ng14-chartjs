@@ -27,3 +27,4 @@ export class BarChartComponent implements AfterViewInit {
 // https://www.freecodecamp.org/news/how-to-make-bar-and-line-charts-using-chartjs-in-angular/
 // https://www.chartjs.org/docs/latest/
 // https://www.chartjs.org/docs/latest/configuration/responsive.html
+// https://stackoverflow.com/questions/28569667/fill-chart-js-bar-chart-with-diagonal-stripes-or-other-patterns
