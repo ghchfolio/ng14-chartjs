@@ -7,7 +7,7 @@ import { BarChartComponent } from './shared/components/bar-chart/bar-chart.compo
 @NgModule({
     declarations: [
         AppComponent,
-        BarChartComponent
+        BarChartComponent,
     ],
     imports: [
         BrowserModule
