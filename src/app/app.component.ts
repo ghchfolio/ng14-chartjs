@@ -25,13 +25,16 @@ export class AppComponent {
                     label: "Profit",
                     data: ['542', '542', '536', '327', '17',
                         '0.00', '538', '541'],
-                    backgroundColor: 'limegreen'
+                    backgroundColor: 'limegreen',
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    borderSkipped: false,
                 }
             ]
         },
         options: {
             // aspectRatio: 2.5
-            responsive: true
+            // responsive: true
         }
     }
 
@@ -59,7 +62,7 @@ export class AppComponent {
         },
         options: {
             // aspectRatio: 2.5
-            responsive: true
+            // responsive: true
         }
     }
 }
