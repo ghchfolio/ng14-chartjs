@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SalesDataService } from './services/sales-data.service';
 
 @Component({
     selector: 'app-root',
@@ -7,15 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+    // e.g. 1 BAR chart w sales data1
+    salesData1$ = this.sds.salesData1$;
+    salesData1Sub = new Subscription();
+    barChartIsReady = false;
     barChartID = 'barChart';
     barChartAriaLabel = 'A bar chart';
-    barChartConfig = {
+    barChartConfig: any = {
         type: 'bar',
         data: {
-            labels: [
-                '2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-                '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',
-            ],
+            labels: [],
             datasets: [
                 {
                     label: "Sales",
@@ -46,9 +49,13 @@ export class AppComponent {
         }
     }
 
+    // e.g. 2 LINE chart w sales data2
+    salesData2$ = this.sds.salesData1$;
+    salesData2Sub = new Subscription();
+    lineChartIsReady = false;
     lineChartID = 'lineChart';
     lineChartAriaLabel = 'A line chart';
-    linechartConfig = {
+    lineChartConfig = {
         type: 'line',
         data: {
             labels: [
@@ -80,7 +87,29 @@ export class AppComponent {
         }
     }
 
-    // takes in a fgColor and bgColor, creates stripes
+    constructor(private sds: SalesDataService) { }
+
+    ngAfterViewInit() {
+        // e.g. 1 BAR chart w sales data1
+        this.salesData1Sub = this.sds.salesData1$
+            .subscribe((res: any) => {
+                if (res.sales !== undefined) {
+                    this.barChartConfig.data.labels = [...res.dates]
+                    this.barChartIsReady = true;
+                }
+            });
+
+        // e.g. 2 LINE chart w sales data2
+        this.salesData2Sub = this.sds.salesData2$
+            .subscribe((res: any) => {
+                if (res.sales !== undefined) {
+                    this.lineChartConfig.data.labels = [...res.dates]
+                    this.lineChartIsReady = true;
+                }
+            });
+    }
+
+    // takes a fgColor and bgColor, creates stripes
     // and applies it to the bar
     private createDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
         const pattern = document.createElement('canvas');
@@ -105,5 +134,10 @@ export class AppComponent {
         }
 
         return 'lightblue';
+    }
+
+    ngOnDestroy() {
+        this.salesData1Sub.unsubscribe();
+        this.salesData2Sub.unsubscribe();
     }
 }
