@@ -18,8 +18,8 @@
             </div>
             <!-- e.g. 1 BAR chart w sales data1 -->
             <div class="col-sm-12 col-md-6">
-                <app-bar-chart *ngIf="barChartIsReady" [id]="barChartID" [chartConfig]="barChartConfig"
-                    [ariaLabel]="barChartAriaLabel">
+                <app-bar-chart *ngIf="barChartIsReady; else loadingChart" [id]="barChartID"
+                    [chartConfig]="barChartConfig" [ariaLabel]="barChartAriaLabel">
                 </app-bar-chart>
             </div>
         </div>
@@ -27,8 +27,8 @@
         <div class="row">
             <!-- e.g. 2 LINE chart w sales data2 -->
             <div class="col-sm-12 col-md-6">
-                <app-bar-chart *ngIf="lineChartIsReady" [id]="lineChartID" [chartConfig]="lineChartConfig"
-                    [ariaLabel]="lineChartAriaLabel">
+                <app-bar-chart *ngIf="lineChartIsReady; else loadingChart" [id]="lineChartID"
+                    [chartConfig]="lineChartConfig" [ariaLabel]="lineChartAriaLabel">
                 </app-bar-chart>
             </div>
             <div class="col-sm-12 col-md-6">
@@ -36,6 +36,13 @@
             </div>
         </div>
     </div>
+
+    <ng-template #loadingChart>
+        <div class="text-center">
+            <p>L O A D I N G &nbsp; &nbsp; C H A R T</p>
+            <p><small>Just a moment...</small></p>
+        </div>
+    </ng-template>
 </body>
 
 </html>
