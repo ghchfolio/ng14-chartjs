@@ -1,3 +1,9 @@
-<div class="chart-container">
-    <canvas [id]="id" [attr.aria-label]="ariaLabel">{{ chart }}</canvas>
+<app-loading-chart *ngIf="chart.data === undefined"></app-loading-chart>
+
+<div [ngClass]="{ 'chart-container': chart.data !== undefined }">
+    <canvas [id]="id" [attr.aria-label]="ariaLabel">
+        <ng-container *ngIf="chart.data !== undefined">
+            {{ chart }}
+        </ng-container>
+    </canvas>
 </div>
