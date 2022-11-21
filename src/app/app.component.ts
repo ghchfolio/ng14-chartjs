@@ -15,7 +15,6 @@ export class AppComponent {
 
     // e.g. 1 BAR chart props
     @ViewChild('barChart') barChart?: BarChartComponent;
-    barChartData$ = this.sds.barChartData$;
     barChartDataSub = new Subscription();
     barChartId = 'barChart';
     barChartAriaLabel = 'A BAR Chart';
@@ -55,7 +54,6 @@ export class AppComponent {
 
     // e.g. 2 LINE chart props
     @ViewChild('lineChart') lineChart?: BarChartComponent;
-    lineChartData$ = this.sds.barChartData$;
     lineChartDataSub = new Subscription();
     lineChartId = 'lineChart';
     lineChartAriaLabel = 'A LINE Chart';
