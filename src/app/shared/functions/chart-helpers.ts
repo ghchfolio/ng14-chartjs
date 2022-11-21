@@ -1,5 +1,4 @@
-// takes a fgColor and bgColor, creates stripes
-// and applies it to the bar
+// takes a fgColor and bgColor, creates stripes and applies it to the bar
 export function CreateDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
     const pattern = document.createElement('canvas');
     pattern.width = 10;

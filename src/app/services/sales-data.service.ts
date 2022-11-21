@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SalesDataService {
 
-    // e.g. 1 BAR chart w sales data1
+    // e.g. 1 BAR chart data
     private barChartDataSource: any = {};
     private barChartDataSourceSubj = new BehaviorSubject<any>(this.barChartDataSource);
     barChartData$ = this.barChartDataSourceSubj.asObservable();
 
-    // e.g. 2 LINE chart w sales data2
+    // e.g. 2 LINE chart data
     private lineChartDataSource: any = {};
     private lineChartDataSourceSubj = new BehaviorSubject<any>(this.lineChartDataSource);
     lineChartData$ = this.lineChartDataSourceSubj.asObservable();
@@ -20,8 +20,8 @@ export class SalesDataService {
         this.fakeResponse();
     }
 
-    fakeResponse() {
-        // e.g.1 send data after 3 secs.
+    private fakeResponse() {
+        // e.g.1 send BAR chart data after 3 secs.
         setTimeout(() => {
             this.barChartDataSourceSubj.next({
                 sales: [
@@ -35,7 +35,7 @@ export class SalesDataService {
             });
         }, 3000);
 
-        // e.g.2 send data after 6 secs.
+        // e.g.2 send LINE chart data after 6 secs.
         setTimeout(() => {
             this.lineChartDataSourceSubj.next({
                 sales: [
