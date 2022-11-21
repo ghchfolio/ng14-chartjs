@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { BarChartComponent } from './shared/components/bar-chart/bar-chart.component';
+import { CreateDiagonalPattern } from './shared/functions/chart-helpers';
 
 @Component({
     selector: 'app-root',
@@ -9,6 +10,8 @@ import { BarChartComponent } from './shared/components/bar-chart/bar-chart.compo
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+    CreateDiagonalPattern = CreateDiagonalPattern;
 
     // e.g. 1 BAR chart w sales data1
     @ViewChild('barChart') barChart?: BarChartComponent;
@@ -28,7 +31,7 @@ export class AppComponent {
                         '467', '576', '572', '79',
                         '92', '574', '573', '576'
                     ],
-                    backgroundColor: this.createDiagonalPattern('red', 'pink'),
+                    backgroundColor: this.CreateDiagonalPattern('red', 'pink'),
                     borderWidth: 2,
                     borderColor: 'red'
                 },
@@ -109,33 +112,6 @@ export class AppComponent {
                     this.lineChart?.createChart(this.lineChartObj)
                 }
             });
-    }
-
-    // takes a fgColor and bgColor, creates stripes
-    // and applies it to the bar
-    private createDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
-        const pattern = document.createElement('canvas');
-        pattern.width = 10;
-        pattern.height = 10;
-
-        let c = pattern.getContext('2d');
-
-        if (c !== null) {
-            c.fillStyle = bgColor;
-            c.fillRect(0, 0, pattern.width, pattern.height);
-            c.strokeStyle = fgColor;
-            c.beginPath();
-            c.moveTo(2, 0);
-            c.lineTo(10, 8);
-            c.stroke();
-            c.beginPath();
-            c.moveTo(0, 8);
-            c.lineTo(2, 10);
-            c.stroke();
-            return c.createPattern(pattern, 'repeat');
-        }
-
-        return 'lightblue';
     }
 
     ngOnDestroy() {
