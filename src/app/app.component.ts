@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
-import { ChartComponent } from './chart/chart.component';
+import { ChartComponent } from './shared/components/chart/chart.component';
 import { CreateDiagonalPattern } from './shared/functions/chartjs-helpers';
 
 @Component({
