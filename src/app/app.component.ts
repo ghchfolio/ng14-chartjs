@@ -41,8 +41,7 @@ export class AppComponent {
                     ],
                     backgroundColor: 'limegreen',
                     borderWidth: 1,
-                    borderRadius: 5,
-                    borderSkipped: false,
+                    borderRadius: 10,
                 }
             ]
         },
