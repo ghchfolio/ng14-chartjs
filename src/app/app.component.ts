@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
+import { BarChartComponent } from './shared/components/bar-chart/bar-chart.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
 
     // e.g. 1 BAR chart w sales data1
+    @ViewChild('barChart') barChart?: BarChartComponent;
     salesData1$ = this.sds.salesData1$;
     salesData1Sub = new Subscription();
-    barChartIsReady = false;
-    barChartID = 'barChart';
-    barChartAriaLabel = 'A bar chart';
+
+    barChartId = 'barChart';
+    barChartAriaLabel = 'A BAR Chart';
+    barChartObj: any = {};
     barChartConfig: any = {
         type: 'bar',
         data: {
@@ -47,21 +50,19 @@ export class AppComponent {
             maintainAspectRatio: false,
             // resizeDelay: 250
         }
-    }
+    };
 
     // e.g. 2 LINE chart w sales data2
+    @ViewChild('lineChart') lineChart?: BarChartComponent;
     salesData2$ = this.sds.salesData1$;
     salesData2Sub = new Subscription();
-    lineChartIsReady = false;
-    lineChartID = 'lineChart';
-    lineChartAriaLabel = 'A line chart';
-    lineChartConfig = {
+    lineChartId = 'lineChart';
+    lineChartAriaLabel = 'A LINE Chart';
+    lineChartObj: any = {};
+    lineChartConfig: any = {
         type: 'line',
         data: {
-            labels: [
-                '2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-                '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',
-            ],
+            labels: [],
             datasets: [
                 {
                     label: "Sales",
@@ -85,7 +86,7 @@ export class AppComponent {
             maintainAspectRatio: false,
             resizeDelay: 125
         }
-    }
+    };
 
     constructor(private sds: SalesDataService) { }
 
@@ -94,8 +95,11 @@ export class AppComponent {
         this.salesData1Sub = this.sds.salesData1$
             .subscribe((res: any) => {
                 if (res.sales !== undefined) {
-                    this.barChartConfig.data.labels = [...res.dates]
-                    this.barChartIsReady = true;
+                    this.barChartConfig.data.labels = [...res.dates];
+                    this.barChartObj.id = 'barChart';
+                    this.barChartObj.ariaLabel = 'A BAR chart';
+                    this.barChartObj.config = { ...this.barChartConfig };
+                    this.barChart?.createChart(this.barChartObj)
                 }
             });
 
@@ -103,8 +107,11 @@ export class AppComponent {
         this.salesData2Sub = this.sds.salesData2$
             .subscribe((res: any) => {
                 if (res.sales !== undefined) {
-                    this.lineChartConfig.data.labels = [...res.dates]
-                    this.lineChartIsReady = true;
+                    this.lineChartConfig.data.labels = [...res.dates];
+                    this.lineChartObj.id = 'barChart';
+                    this.lineChartObj.ariaLabel = 'A BAR chart';
+                    this.lineChartObj.config = { ...this.lineChartConfig };
+                    this.lineChart?.createChart(this.lineChartObj)
                 }
             });
     }

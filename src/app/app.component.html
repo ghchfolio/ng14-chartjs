@@ -10,31 +10,24 @@
 
 <body>
     <div class="container">
-        <h1 class="h4 mb-3">Angular 14 &amp; Chart.js 4</h1>
+        <h1 class="h4 mb-3">Angular 14 / Chart.js 4</h1>
         <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <p>This bar chart is a <b>reusable component</b>.</p>
-                <p>To use it, pass in the ID, aria-label (for HTML5 canvas accessibility) and options.</p>
+            <div class="col-sm-12 col-md-6 text-md-end">
+                <p>This bar chart is a <em>reusable</em> component.</p>
             </div>
             <!-- e.g. 1 BAR chart w sales data1 -->
             <div class="col-sm-12 col-md-6">
-                <app-bar-chart *ngIf="barChartIsReady" [id]="barChartID" [chartConfig]="barChartConfig"
-                    [ariaLabel]="barChartAriaLabel">
-                </app-bar-chart>
-                <app-loading-chart *ngIf="!barChartIsReady"></app-loading-chart>
+                <app-bar-chart #barChart [id]="barChartId" [ariaLabel]="barChartAriaLabel"></app-bar-chart>
             </div>
         </div>
         <hr>
         <div class="row">
             <!-- e.g. 2 LINE chart w sales data2 -->
             <div class="col-sm-12 col-md-6">
-                <app-bar-chart *ngIf="lineChartIsReady" [id]="lineChartID" [chartConfig]="lineChartConfig"
-                    [ariaLabel]="lineChartAriaLabel">
-                </app-bar-chart>
-                <app-loading-chart *ngIf="!lineChartIsReady"></app-loading-chart>
+                <app-bar-chart #lineChart [id]="lineChartId" [ariaLabel]="lineChartAriaLabel"></app-bar-chart>
             </div>
-            <div class="col-sm-12 col-md-6">
-                <p>This is the same component except the ID, aria-label, and options are different.</p>
+            <div class="col-sm-12 col-md-6 text-md-start">
+                <p>This is the same component with different data/configuration.</p>
             </div>
         </div>
     </div>

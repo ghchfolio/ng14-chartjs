@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 import { Chart } from 'node_modules/chart.js/auto';
 
 @Component({
@@ -6,25 +6,18 @@ import { Chart } from 'node_modules/chart.js/auto';
     templateUrl: './bar-chart.component.html',
     styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent implements AfterViewInit {
+export class BarChartComponent {
 
-    @Input() id!: string;
-    @Input() ariaLabel!: string;
-    @Input() chartConfig!: any;
+    @Input() id: any;
+    @Input() ariaLabel: any;
 
-    chart: any;
+    chart: any = {};
 
-    constructor() { }
+    constructor(private elementRef: ElementRef) { }
 
-    ngAfterViewInit() {
-        this.createChart();
+    createChart(chartObj: any) {
+        const canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
+        this.chart = new Chart(canvasEl, chartObj.config);
     }
 
-    async createChart() {
-        this.chart = await new Chart(this.id, this.chartConfig);
-    }
 }
-// https://www.freecodecamp.org/news/how-to-make-bar-and-line-charts-using-chartjs-in-angular/
-// https://www.chartjs.org/docs/latest/
-// https://www.chartjs.org/docs/latest/configuration/responsive.html
-// https://stackoverflow.com/questions/28569667/fill-chart-js-bar-chart-with-diagonal-stripes-or-other-patterns
