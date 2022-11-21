@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { BarChartComponent } from './shared/components/bar-chart/bar-chart.component';
-import { CreateDiagonalPattern } from './shared/functions/chart-helpers';
+import { CreateDiagonalPattern } from './shared/functions/chartjs-helpers';
 
 @Component({
     selector: 'app-root',
