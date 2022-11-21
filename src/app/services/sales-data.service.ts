@@ -7,14 +7,14 @@ import { BehaviorSubject } from 'rxjs';
 export class SalesDataService {
 
     // e.g. 1 BAR chart w sales data1
-    private salesData1DataSource: any = {};
-    private salesData1DataSourceSubj = new BehaviorSubject<any>(this.salesData1DataSource);
-    salesData1$ = this.salesData1DataSourceSubj.asObservable();
+    private barChartDataSource: any = {};
+    private barChartDataSourceSubj = new BehaviorSubject<any>(this.barChartDataSource);
+    barChartData$ = this.barChartDataSourceSubj.asObservable();
 
     // e.g. 2 LINE chart w sales data2
-    private salesData2DataSource: any = {};
-    private salesData2DataSourceSubj = new BehaviorSubject<any>(this.salesData2DataSource);
-    salesData2$ = this.salesData2DataSourceSubj.asObservable();
+    private lineChartDataSource: any = {};
+    private lineChartDataSourceSubj = new BehaviorSubject<any>(this.lineChartDataSource);
+    lineChartData$ = this.lineChartDataSourceSubj.asObservable();
 
     constructor() {
         this.fakeResponse();
@@ -23,7 +23,7 @@ export class SalesDataService {
     fakeResponse() {
         // e.g.1 send data after 3 secs.
         setTimeout(() => {
-            this.salesData1DataSourceSubj.next({
+            this.barChartDataSourceSubj.next({
                 sales: [
                     '467', '576', '572', '79',
                     '92', '574', '573', '576'
@@ -37,7 +37,7 @@ export class SalesDataService {
 
         // e.g.2 send data after 6 secs.
         setTimeout(() => {
-            this.salesData2DataSourceSubj.next({
+            this.lineChartDataSourceSubj.next({
                 sales: [
                     '30', '50', '400', '791',
                     '192', '57', '3', '76'

@@ -12,9 +12,8 @@ export class AppComponent {
 
     // e.g. 1 BAR chart w sales data1
     @ViewChild('barChart') barChart?: BarChartComponent;
-    salesData1$ = this.sds.salesData1$;
-    salesData1Sub = new Subscription();
-
+    barChartData$ = this.sds.barChartData$;
+    barChartDataSub = new Subscription();
     barChartId = 'barChart';
     barChartAriaLabel = 'A BAR Chart';
     barChartObj: any = {};
@@ -54,8 +53,8 @@ export class AppComponent {
 
     // e.g. 2 LINE chart w sales data2
     @ViewChild('lineChart') lineChart?: BarChartComponent;
-    salesData2$ = this.sds.salesData1$;
-    salesData2Sub = new Subscription();
+    lineChartData$ = this.sds.barChartData$;
+    lineChartDataSub = new Subscription();
     lineChartId = 'lineChart';
     lineChartAriaLabel = 'A LINE Chart';
     lineChartObj: any = {};
@@ -92,24 +91,20 @@ export class AppComponent {
 
     ngAfterViewInit() {
         // e.g. 1 BAR chart w sales data1
-        this.salesData1Sub = this.sds.salesData1$
+        this.barChartDataSub = this.sds.barChartData$
             .subscribe((res: any) => {
                 if (res.sales !== undefined) {
                     this.barChartConfig.data.labels = [...res.dates];
-                    this.barChartObj.id = 'barChart';
-                    this.barChartObj.ariaLabel = 'A BAR chart';
                     this.barChartObj.config = { ...this.barChartConfig };
                     this.barChart?.createChart(this.barChartObj)
                 }
             });
 
         // e.g. 2 LINE chart w sales data2
-        this.salesData2Sub = this.sds.salesData2$
+        this.lineChartDataSub = this.sds.lineChartData$
             .subscribe((res: any) => {
                 if (res.sales !== undefined) {
                     this.lineChartConfig.data.labels = [...res.dates];
-                    this.lineChartObj.id = 'barChart';
-                    this.lineChartObj.ariaLabel = 'A BAR chart';
                     this.lineChartObj.config = { ...this.lineChartConfig };
                     this.lineChart?.createChart(this.lineChartObj)
                 }
@@ -144,7 +139,7 @@ export class AppComponent {
     }
 
     ngOnDestroy() {
-        this.salesData1Sub.unsubscribe();
-        this.salesData2Sub.unsubscribe();
+        this.barChartDataSub.unsubscribe();
+        this.lineChartDataSub.unsubscribe();
     }
 }
