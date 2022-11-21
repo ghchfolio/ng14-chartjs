@@ -4,14 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ChartComponent } from './shared/components/chart/chart.component';
 import { LoadingChartComponent } from './shared/components/loading-chart/loading-chart.component';
-import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { LoadingChartSpinnerComponent } from './shared/components/loading-chart-spinner/loading-chart-spinner.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ChartComponent,
         LoadingChartComponent,
-        LoadingSpinnerComponent,
+        LoadingChartSpinnerComponent,
     ],
     imports: [
         BrowserModule
