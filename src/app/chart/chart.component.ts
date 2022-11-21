@@ -2,11 +2,11 @@ import { Component, ElementRef, Input } from '@angular/core';
 import { Chart } from 'node_modules/chart.js/auto';
 
 @Component({
-    selector: 'app-bar-chart',
-    templateUrl: './bar-chart.component.html',
-    styleUrls: ['./bar-chart.component.scss']
+    selector: 'app-chart',
+    templateUrl: './chart.component.html',
+    styleUrls: ['./chart.component.scss']
 })
-export class BarChartComponent {
+export class ChartComponent {
 
     @Input() id: any;
     @Input() ariaLabel: any;

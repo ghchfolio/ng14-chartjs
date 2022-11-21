@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
-import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { ChartComponent } from './chart/chart.component';
 import { CreateDiagonalPattern } from './shared/functions/chartjs-helpers';
 
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent {
     CreateDiagonalPattern = CreateDiagonalPattern;
 
     // e.g. 1 BAR chart props
-    @ViewChild('barChart') barChart?: BarChartComponent;
+    @ViewChild('barChart') barChart?: ChartComponent;
     barChartDataSub = new Subscription();
     barChartId = 'barChart';
     barChartAriaLabel = 'A BAR Chart';
@@ -52,7 +52,7 @@ export class AppComponent {
     };
 
     // e.g. 2 LINE chart props
-    @ViewChild('lineChart') lineChart?: BarChartComponent;
+    @ViewChild('lineChart') lineChart?: ChartComponent;
     lineChartDataSub = new Subscription();
     lineChartId = 'lineChart';
     lineChartAriaLabel = 'A LINE Chart';
