@@ -13,13 +13,12 @@ export class AppComponent {
 
     CreateDiagonalPattern = CreateDiagonalPattern;
 
-    // e.g. 1 BAR chart w sales data1
+    // e.g. 1 BAR chart props
     @ViewChild('barChart') barChart?: BarChartComponent;
     barChartData$ = this.sds.barChartData$;
     barChartDataSub = new Subscription();
     barChartId = 'barChart';
     barChartAriaLabel = 'A BAR Chart';
-    barChartObj: any = {};
     barChartConfig: any = {
         type: 'bar',
         data: {
@@ -54,13 +53,12 @@ export class AppComponent {
         }
     };
 
-    // e.g. 2 LINE chart w sales data2
+    // e.g. 2 LINE chart props
     @ViewChild('lineChart') lineChart?: BarChartComponent;
     lineChartData$ = this.sds.barChartData$;
     lineChartDataSub = new Subscription();
     lineChartId = 'lineChart';
     lineChartAriaLabel = 'A LINE Chart';
-    lineChartObj: any = {};
     lineChartConfig: any = {
         type: 'line',
         data: {
@@ -93,23 +91,21 @@ export class AppComponent {
     constructor(private sds: SalesDataService) { }
 
     ngAfterViewInit() {
-        // e.g. 1 BAR chart w sales data1
+        // e.g. 1 BAR chart subscription
         this.barChartDataSub = this.sds.barChartData$
             .subscribe((res: any) => {
                 if (res.sales !== undefined) {
                     this.barChartConfig.data.labels = [...res.dates];
-                    this.barChartObj.config = { ...this.barChartConfig };
-                    this.barChart?.createChart(this.barChartObj)
+                    this.barChart?.createChart(this.barChartConfig);
                 }
             });
 
-        // e.g. 2 LINE chart w sales data2
+        // e.g. 2 LINE chart subscription
         this.lineChartDataSub = this.sds.lineChartData$
             .subscribe((res: any) => {
                 if (res.sales !== undefined) {
                     this.lineChartConfig.data.labels = [...res.dates];
-                    this.lineChartObj.config = { ...this.lineChartConfig };
-                    this.lineChart?.createChart(this.lineChartObj)
+                    this.lineChart?.createChart(this.lineChartConfig);
                 }
             });
     }

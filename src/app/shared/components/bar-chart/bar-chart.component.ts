@@ -15,9 +15,9 @@ export class BarChartComponent {
 
     constructor(private elementRef: ElementRef) { }
 
-    createChart(chartObj: any) {
+    createChart(chartConfig: any) {
         const canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
-        this.chart = new Chart(canvasEl, chartObj.config);
+        this.chart = new Chart(canvasEl, chartConfig);
     }
 
 }
