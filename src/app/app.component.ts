@@ -54,8 +54,6 @@ export class AppComponent {
     // e.g. 2 LINE chart props
     @ViewChild('lineChart') lineChart?: ChartComponent;
     lineChartDataSub = new Subscription();
-    lineChartId = 'lineChart';
-    lineChartAriaLabel = 'A LINE Chart';
     lineChartConfig: any = {
         type: 'line',
         data: {
