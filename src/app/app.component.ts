@@ -17,7 +17,7 @@ export class AppComponent {
     @ViewChild('barChart') barChart?: ChartComponent;
     barChartDataSub = new Subscription();
     barChartId = 'barChart';
-    barChartAriaLabel = 'A BAR Chart';
+    barChartAriaLabel = 'A Sales/Profit comparison chart';
     barChartConfig: any = {
         type: 'bar',
         data: {
