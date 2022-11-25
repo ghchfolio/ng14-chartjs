@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
-import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './shared/functions/chartjs-helpers';
+import { barChartConfig, lineChartConfig, badDataChartConfig } from './shared/functions/chart-configs';
 
 @Component({
     selector: 'app-root',
@@ -11,119 +11,24 @@ import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './shared/fu
 })
 export class AppComponent {
 
-    CreateDiagonalPattern = CreateDiagonalPattern;
-    CreateReverseDiagonalPattern = CreateReverseDiagonalPattern;
-
     // e.g. 1 BAR chart props
     @ViewChild('barChart') barChart?: ChartComponent;
     barChartDataSub = new Subscription();
     barChartId = 'barChart';
     barChartAriaLabel = 'A Sales/Profit comparison chart';
-    barChartConfig: any = {
-        type: 'bar',
-        data: {
-            labels: [],
-            datasets: [
-                {
-                    label: "Sales",
-                    data: [
-                        '467', '576', '572', '79',
-                        '92', '574', '573', '576'
-                    ],
-                    backgroundColor: this.CreateDiagonalPattern('red', 'pink'),
-                    borderWidth: 2,
-                    borderColor: 'red'
-                },
-                {
-                    label: "Profit",
-                    data: [
-                        '542', '542', '536', '327',
-                        '17', '0.00', '538', '541'
-                    ],
-                    backgroundColor: this.CreateReverseDiagonalPattern('green', 'lightgreen'),
-                    borderWidth: 2,
-                    borderColor: 'green',
-                    borderRadius: 5,
-                }
-            ]
-        },
-        options: {
-            maintainAspectRatio: false,
-            // resizeDelay: 250
-        },
-        errorMessage: ''
-    };
+    barChartConfig = barChartConfig;
 
     // e.g. 2 LINE chart props
     @ViewChild('lineChart') lineChart?: ChartComponent;
     lineChartDataSub = new Subscription();
-    lineChartConfig: any = {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [
-                {
-                    label: "Sales",
-                    data: [
-                        '30', '50', '400', '791',
-                        '192', '57', '3', '76'
-                    ],
-                    backgroundColor: 'yellow'
-                },
-                {
-                    label: "Profit",
-                    data: [
-                        '54', '52', '536', '37',
-                        '17', '0.00', '58', '41'
-                    ],
-                    backgroundColor: 'red'
-                }
-            ]
-        },
-        options: {
-            maintainAspectRatio: false,
-            resizeDelay: 125
-        }
-    };
+    lineChartConfig = lineChartConfig;
 
     // e.g. 3 BAD chart props
     @ViewChild('badDataChart') badDataChart?: ChartComponent;
     badDataChartSub = new Subscription();
     badDataChartId = 'badDataChart';
     badDataChartAriaLabel = 'A bad data chart';
-    badDataChartConfig: any = {
-        type: 'bar',
-        data: {
-            labels: [],
-            datasets: [
-                {
-                    label: "Sales",
-                    data: [
-                        '467', '576', '572', '79',
-                        '92', '574', '573', '576'
-                    ],
-                    backgroundColor: this.CreateDiagonalPattern('red', 'pink'),
-                    borderWidth: 2,
-                    borderColor: 'red'
-                },
-                {
-                    label: "Profit",
-                    data: [
-                        '542', '542', '536', '327',
-                        '17', '0.00', '538', '541'
-                    ],
-                    backgroundColor: 'limegreen',
-                    borderWidth: 1,
-                    borderRadius: 10,
-                }
-            ]
-        },
-        options: {
-            maintainAspectRatio: false,
-            // resizeDelay: 250
-        },
-        errorMessage: ''
-    };
+    badDataChartConfig = badDataChartConfig;
 
     constructor(private sds: SalesDataService) { }
 

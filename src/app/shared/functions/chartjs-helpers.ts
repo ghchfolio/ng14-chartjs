@@ -1,4 +1,5 @@
-// takes a fgColor and bgColor, creates stripes and applies it to the bar
+// takes a fgColor and bgColor, draws a diagonal line from top left to bottom right,
+// and adds the pattern to the bar that called it.
 export function CreateDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
     const pattern = document.createElement('canvas');
     pattern.width = 10;
@@ -26,6 +27,8 @@ export function CreateDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
     return 'lightblue';
 }
 
+// takes a fgColor and bgColor, draws a diagonal line from bottom left to top right,
+// and adds the pattern to the bar that called it.
 export function CreateReverseDiagonalPattern(fgColor = 'gray', bgColor = 'darkgray') {
     const pattern = document.createElement('canvas');
     pattern.width = 10;
