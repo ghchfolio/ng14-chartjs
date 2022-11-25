@@ -21,7 +21,7 @@
                 <app-chart #barChart [id]="barChartId" [ariaLabel]="barChartAriaLabel"></app-chart>
             </div>
         </div>
-        <!-- <hr> -->
+        <hr>
         <div class="row mt-5">
             <!-- e.g. 2 LINE chart w sales data2 -->
             <div class="col-sm-12 col-md-6 text-md-start order-md-2">
@@ -30,6 +30,17 @@
             </div>
             <div class="col-sm-12 col-md-6 order-md-1 canvas-col">
                 <app-chart #lineChart [id]="'lineChart'" [ariaLabel]="'A Sales/Profit comparison chart'"></app-chart>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-5">
+            <div class="col-sm-12 col-md-6 text-md-end">
+                <h2 class="h6">Example 3: Bad Data</h2>
+                <p>For when things go wrong.</p>
+            </div>
+            <!-- e.g. 3 BAR chart w sales data1 -->
+            <div class="col-sm-12 col-md-6 canvas-col">
+                <app-chart #badDataChart [id]="badDataChartId" [ariaLabel]="badDataChartAriaLabel"></app-chart>
             </div>
         </div>
     </main>

@@ -59,7 +59,6 @@ export class SalesDataService {
                     return throwError(() => {
                         switch (error.status) {
                             case 404: {
-                                console.log(error);
                                 return { status: error.status, message: 'Data Not Found' };
                                 // return `Not Found: ${error.status}`;
                             }
