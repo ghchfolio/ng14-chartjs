@@ -11,7 +11,7 @@
 <body>
     <main class="container">
         <h1 class="h6 my-3">Ng14 / Chart.js 4</h1>
-        <div class="row mt-5">
+        <div class="row my-5">
             <div class="col-sm-12 col-md-6 text-md-end">
                 <h2 class="h6">Example 1: Bar</h2>
                 <p>A reusable chart component.</p>
@@ -21,8 +21,8 @@
                 <app-chart #barChart [id]="barChartId" [ariaLabel]="barChartAriaLabel"></app-chart>
             </div>
         </div>
-        <hr>
-        <div class="row mt-5">
+        <!-- <hr> -->
+        <div class="row my-5">
             <!-- e.g. 2 LINE chart w sales data2 -->
             <div class="col-sm-12 col-md-6 text-md-start order-md-2">
                 <h2 class="h6">Example 2: Line</h2>
@@ -32,10 +32,10 @@
                 <app-chart #lineChart [id]="'lineChart'" [ariaLabel]="'A Sales/Profit comparison chart'"></app-chart>
             </div>
         </div>
-        <hr>
-        <div class="row mt-5">
+        <!-- <hr> -->
+        <div class="row my-5">
             <div class="col-sm-12 col-md-6 text-md-end">
-                <h2 class="h6">Example 3: Bad Data</h2>
+                <h2 class="h6">Example 3: Error Status</h2>
                 <p>For when things go wrong.</p>
             </div>
             <!-- e.g. 3 BAR chart w sales data1 -->
