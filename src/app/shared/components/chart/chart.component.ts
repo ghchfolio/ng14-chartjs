@@ -12,12 +12,15 @@ export class ChartComponent {
     @Input() ariaLabel: any;
 
     chart: any = {};
+    config: any = {};
 
     constructor(private elementRef: ElementRef) { }
 
-    createChart(chartConfig: any) {
+    createChart(config: any) {
         const canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
-        this.chart = new Chart(canvasEl, chartConfig);
+
+        this.config = { ...config };
+        if (this.config.data !== undefined) this.chart = new Chart(canvasEl, this.config);
     }
 
 }

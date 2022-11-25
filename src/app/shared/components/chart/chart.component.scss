@@ -3,3 +3,12 @@
     height: 20rem;
     min-height: 10rem;
 }
+
+.chart-error {
+    padding: 0.5rem;
+
+    canvas,
+    h2 {
+        display: none;
+    }
+}
