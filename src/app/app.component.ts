@@ -48,7 +48,8 @@ export class AppComponent {
         options: {
             maintainAspectRatio: false,
             // resizeDelay: 250
-        }
+        },
+        errorMessage: ''
     };
 
     // e.g. 2 LINE chart props
@@ -87,21 +88,27 @@ export class AppComponent {
 
     ngAfterViewInit() {
         // e.g. 1 BAR chart subscription
-        this.barChartDataSub = this.sds.barChartData$
-            .subscribe((res: any) => {
-                if (res.sales !== undefined) {
-                    this.barChartConfig.data.labels = [...res.dates];
-                    this.barChart?.createChart(this.barChartConfig);
-                }
+        this.barChartDataSub = this.sds.fakeErrrorResponse()
+            .subscribe({
+                next: (res: any) => {
+                    if (res.sales !== undefined) {
+                        this.barChartConfig.data.labels = [...res.dates];
+                        this.barChart?.createChart(this.barChartConfig);
+                    }
+                },
+                error: error => this.barChart?.createChart(error)
             });
 
         // e.g. 2 LINE chart subscription
         this.lineChartDataSub = this.sds.lineChartData$
-            .subscribe((res: any) => {
-                if (res.sales !== undefined) {
-                    this.lineChartConfig.data.labels = [...res.dates];
-                    this.lineChart?.createChart(this.lineChartConfig);
-                }
+            .subscribe({
+                next: (res: any) => {
+                    if (res.sales !== undefined) {
+                        this.lineChartConfig.data.labels = [...res.dates];
+                        this.lineChart?.createChart(this.lineChartConfig);
+                    }
+                },
+                error: error => this.lineChart?.createChart(error)
             });
     }
 

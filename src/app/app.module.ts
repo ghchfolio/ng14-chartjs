@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ChartComponent } from './shared/components/chart/chart.component';
@@ -14,7 +15,8 @@ import { LoadingChartSpinnerComponent } from './shared/components/loading-chart-
         LoadingChartSpinnerComponent,
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

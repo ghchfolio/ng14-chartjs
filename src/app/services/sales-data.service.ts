@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class SalesDataService {
     private lineChartDataSourceSubj = new BehaviorSubject<any>(this.lineChartDataSource);
     lineChartData$ = this.lineChartDataSourceSubj.asObservable();
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.fakeResponse();
     }
 
@@ -48,5 +49,35 @@ export class SalesDataService {
                 ]
             });
         }, 6000);
+    }
+
+    fakeErrrorResponse() {
+        return this.http
+            .get('https://jsonplaceholder.typicode.com/bad-url-example/1')
+            .pipe(
+                catchError(error => {
+                    return throwError(() => {
+                        switch (error.status) {
+                            case 404: {
+                                console.log(error);
+                                return { status: error.status, message: 'Data Not Found' };
+                                // return `Not Found: ${error.status}`;
+                            }
+                            case 403: {
+                                return { status: error.status, message: 'Access Denied' };
+                                // return `Access Denied: ${error.message}`;
+                            }
+                            case 500:
+                                return { status: error.status, message: 'Internal Server Error' }; {
+                                    // return `Internal Server Error: ${error.message}`;
+                                }
+                            default: {
+                                return { status: error.status, message: 'Unknown Server Error' };
+                                // return `Unknown Server Error: ${error.message}`;
+                            }
+                        }
+                    });
+                })
+            )
     }
 }
