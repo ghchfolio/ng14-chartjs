@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
-import { CreateDiagonalPattern } from './shared/functions/chartjs-helpers';
+import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './shared/functions/chartjs-helpers';
 
 @Component({
     selector: 'app-root',
@@ -12,6 +12,7 @@ import { CreateDiagonalPattern } from './shared/functions/chartjs-helpers';
 export class AppComponent {
 
     CreateDiagonalPattern = CreateDiagonalPattern;
+    CreateReverseDiagonalPattern = CreateReverseDiagonalPattern;
 
     // e.g. 1 BAR chart props
     @ViewChild('barChart') barChart?: ChartComponent;
@@ -39,9 +40,10 @@ export class AppComponent {
                         '542', '542', '536', '327',
                         '17', '0.00', '538', '541'
                     ],
-                    backgroundColor: 'limegreen',
-                    borderWidth: 1,
-                    borderRadius: 10,
+                    backgroundColor: this.CreateReverseDiagonalPattern('green', 'lightgreen'),
+                    borderWidth: 2,
+                    borderColor: 'green',
+                    borderRadius: 5,
                 }
             ]
         },
