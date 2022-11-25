@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
-import { barChartConfig, lineChartConfig, badChartConfig } from './shared/functions/chart-configs';
+import { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig } from './shared/functions/chart-configs';
 
 @Component({
     selector: 'app-root',
@@ -21,7 +21,12 @@ export class AppComponent {
     lineChartDataSub = new Subscription();
     lineChartConfig = lineChartConfig;
 
-    // e.g. 3 BAD chart props
+    // e.g. 3 DONUT chart props
+    @ViewChild('donutChart') donutChart?: ChartComponent;
+    donutChartDataSub = new Subscription();
+    donutChartConfig = donutChartConfig;
+
+    // e.g. 4 BAD chart props
     @ViewChild('badChart') badChart?: ChartComponent;
     badChartSub = new Subscription();
     badChartConfig = badChartConfig;
@@ -53,7 +58,19 @@ export class AppComponent {
                 error: error => this.lineChart?.createChart(error)
             });
 
-        // e.g. 3 BAD chart sub
+        // e.g. 3 DONUT chart sub
+        this.donutChartDataSub = this.sds.donutChartData$
+            .subscribe({
+                next: (res: any) => {
+                    if (res.sales !== undefined) {
+                        this.donutChartConfig.data.labels = [...res.sales];
+                        this.donutChart?.createChart(this.donutChartConfig);
+                    }
+                },
+                error: error => this.donutChart?.createChart(error)
+            });
+
+        // e.g. 4 BAD chart sub
         this.badChartSub = this.sds.getBadData()
             .subscribe({
                 next: (res: any) => {
@@ -64,11 +81,15 @@ export class AppComponent {
                 },
                 error: error => this.badChart?.createChart(error)
             });
+
+
+
     }
 
     ngOnDestroy() {
         this.barChartDataSub.unsubscribe();
         this.lineChartDataSub.unsubscribe();
+        this.donutChartDataSub.unsubscribe();
         this.badChartSub.unsubscribe();
     }
 }

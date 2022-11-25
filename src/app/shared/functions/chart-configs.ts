@@ -1,5 +1,5 @@
 import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './chartjs-helpers';
-export { barChartConfig, lineChartConfig, badChartConfig }
+export { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig }
 
 let barChartConfig: any = {
     id: 'barChart',
@@ -72,3 +72,31 @@ let badChartConfig: any = {
     id: 'badChart',
     ariaLabel: 'A BAD chart'
 };
+
+let donutChartConfig: any = {
+    id: 'donutChart',
+    ariaLabel: 'A DONUT chart',
+    type: 'doughnut',
+    data: {
+        labels: ['Red', 'Orange', 'Purple', 'Green', 'Blue'],
+        datasets: [
+            {
+                label: 'Dataset 1',
+                data: [12, 77, 29, 99, 4],
+                backgroundColor: ['#ff6666', 'Orange', '#ff66ff', '#66ff66', '#6699ff'],
+            }
+        ]
+    },
+    options: {
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Donut Chart'
+            }
+        }
+    },
+}

@@ -17,12 +17,17 @@ export class SalesDataService {
     private lineChartDataSourceSubj = new BehaviorSubject<any>(this.lineChartDataSource);
     lineChartData$ = this.lineChartDataSourceSubj.asObservable();
 
+    // e.g. 4 LINE chart data
+    private donutChartDataSource: any = {};
+    private donutChartDataSourceSubj = new BehaviorSubject<any>(this.donutChartDataSource);
+    donutChartData$ = this.donutChartDataSourceSubj.asObservable();
+
     constructor(private http: HttpClient) {
         this.getFakeData();
     }
 
     private getFakeData() {
-        // e.g.1 send BAR chart data after 3 secs.
+        // e.g.1 send BAR chart data after 1 sec.
         setTimeout(() => {
             this.barChartDataSourceSubj.next({
                 sales: [
@@ -34,9 +39,9 @@ export class SalesDataService {
                     '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',
                 ]
             });
-        }, 3000);
+        }, 1000);
 
-        // e.g.2 send LINE chart data after 6 secs.
+        // e.g.2 send LINE chart data after 2 secs.
         setTimeout(() => {
             this.lineChartDataSourceSubj.next({
                 sales: [
@@ -48,7 +53,14 @@ export class SalesDataService {
                     '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',
                 ]
             });
-        }, 6000);
+        }, 2000);
+
+        // e.g.3 send BAR chart data after 3 secs.
+        setTimeout(() => {
+            this.donutChartDataSourceSubj.next({
+                sales: [12, 77, 29, 99, 4],
+            });
+        }, 3000);
     }
 
     getBadData() {
@@ -79,4 +91,5 @@ export class SalesDataService {
                 })
             )
     }
+
 }

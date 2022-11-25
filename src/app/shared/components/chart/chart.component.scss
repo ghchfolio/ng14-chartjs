@@ -7,8 +7,12 @@
 .chart-error {
     padding: 0.5rem;
 
-    canvas,
     h2 {
         display: none;
+    }
+
+    canvas {
+        display: none;
+        // margin: 0 auto;
     }
 }

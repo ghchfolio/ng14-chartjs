@@ -16,14 +16,12 @@
                 <h2 class="h6">Example 1: Bar</h2>
                 <p>A reusable chart component.</p>
             </div>
-            <!-- e.g. 1 BAR chart w sales data1 -->
             <div class="col-sm-12 col-md-6 canvas-col">
                 <app-chart #barChart [id]="barChartConfig.id" [ariaLabel]="barChartConfig.ariaLabel"></app-chart>
             </div>
         </div>
-        <!-- <hr> -->
+
         <div class="row my-5">
-            <!-- e.g. 2 LINE chart w sales data2 -->
             <div class="col-sm-12 col-md-6 text-md-start order-md-2">
                 <h2 class="h6">Example 2: Line</h2>
                 <p>Same component, different data/configuration.</p>
@@ -32,19 +30,27 @@
                 <app-chart #lineChart [id]="lineChartConfig.id" [ariaLabel]="lineChartConfig.ariaLabel"></app-chart>
             </div>
         </div>
-        <!-- <hr> -->
+
         <div class="row my-5">
             <div class="col-sm-12 col-md-6 text-md-end">
-                <h2 class="h6">Example 3: Error Status</h2>
+                <h2 class="h6">Example 3: Donut</h2>
+                <p>Same component, different data/configuration.</p>
+            </div>
+            <div class="col-sm-12 col-md-6 canvas-col">
+                <app-chart #donutChart [id]="donutChart.id" [ariaLabel]="donutChart.ariaLabel"></app-chart>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-sm-12 col-md-6 text-md-start order-md-2">
+                <h2 class="h6">Example 4: Error Status</h2>
                 <p>For when things go wrong.</p>
             </div>
-            <!-- e.g. 3 BAR chart w sales data1 -->
             <div class="col-sm-12 col-md-6 canvas-col">
                 <app-chart #badChart [id]="badChart.id" [ariaLabel]="badChart.ariaLabel"></app-chart>
             </div>
         </div>
     </main>
-
 </body>
 
 </html>
