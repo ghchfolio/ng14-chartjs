@@ -34,8 +34,7 @@ let barChartConfig: any = {
     options: {
         maintainAspectRatio: false,
         // resizeDelay: 250
-    },
-    errorMessage: ''
+    }
 };
 
 let lineChartConfig: any = {
@@ -71,36 +70,5 @@ let lineChartConfig: any = {
 
 let badChartConfig: any = {
     id: 'badChart',
-    ariaLabel: 'A Sales/Profit comparison chart',
-    type: 'bar',
-    data: {
-        labels: [],
-        datasets: [
-            {
-                label: "Sales",
-                data: [
-                    '467', '576', '572', '79',
-                    '92', '574', '573', '576'
-                ],
-                backgroundColor: CreateDiagonalPattern('red', 'pink'),
-                borderWidth: 2,
-                borderColor: 'red'
-            },
-            {
-                label: "Profit",
-                data: [
-                    '542', '542', '536', '327',
-                    '17', '0.00', '538', '541'
-                ],
-                backgroundColor: 'limegreen',
-                borderWidth: 1,
-                borderRadius: 10,
-            }
-        ]
-    },
-    options: {
-        maintainAspectRatio: false,
-        // resizeDelay: 250
-    },
-    errorMessage: ''
+    ariaLabel: 'A BAD chart'
 };
