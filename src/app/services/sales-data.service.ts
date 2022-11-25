@@ -18,10 +18,10 @@ export class SalesDataService {
     lineChartData$ = this.lineChartDataSourceSubj.asObservable();
 
     constructor(private http: HttpClient) {
-        this.fakeResponse();
+        this.getFakeData();
     }
 
-    private fakeResponse() {
+    private getFakeData() {
         // e.g.1 send BAR chart data after 3 secs.
         setTimeout(() => {
             this.barChartDataSourceSubj.next({
@@ -51,7 +51,7 @@ export class SalesDataService {
         }, 6000);
     }
 
-    fakeErrrorResponse() {
+    getBadData() {
         return this.http
             .get('https://jsonplaceholder.typicode.com/bad-url-example/1')
             .pipe(

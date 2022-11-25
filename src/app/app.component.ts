@@ -88,7 +88,7 @@ export class AppComponent {
 
     ngAfterViewInit() {
         // e.g. 1 BAR chart subscription
-        this.barChartDataSub = this.sds.fakeErrrorResponse()
+        this.barChartDataSub = this.sds.getBadData()
             .subscribe({
                 next: (res: any) => {
                     if (res.sales !== undefined) {
