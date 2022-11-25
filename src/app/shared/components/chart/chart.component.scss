@@ -1,18 +1,14 @@
 .chart-container {
     position: relative;
-    height: 20rem;
-    min-height: 10rem;
-}
-
-.chart-error {
+    max-height: 20rem;
+    min-height: 20rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 40px #fff;
+    border-radius: 7px;
+    margin: 1rem 0 2rem 0;
     padding: 0.5rem;
 
-    h2 {
+    .chart-canvas {
         display: none;
-    }
-
-    canvas {
-        display: none;
-        // margin: 0 auto;
     }
 }

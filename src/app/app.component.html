@@ -11,45 +11,30 @@
 <body>
     <main class="container">
         <h1 class="h6 my-3">Ng14 / Chart.js 4</h1>
-        <div class="row my-5">
-            <div class="col-sm-12 col-md-6 text-md-end">
-                <h2 class="h6">Example 1: Bar</h2>
-                <p>A reusable chart component.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 canvas-col">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h2 class="h6">Bar</h2>
                 <app-chart #barChart [id]="barChartConfig.id" [ariaLabel]="barChartConfig.ariaLabel"></app-chart>
             </div>
-        </div>
-
-        <div class="row my-5">
-            <div class="col-sm-12 col-md-6 text-md-start order-md-2">
-                <h2 class="h6">Example 2: Line</h2>
-                <p>Same component, different data/configuration.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 order-md-1 canvas-col">
+            <div class="col-sm-12 col-md-6">
+                <h2 class="h6">Line</h2>
                 <app-chart #lineChart [id]="lineChartConfig.id" [ariaLabel]="lineChartConfig.ariaLabel"></app-chart>
             </div>
         </div>
 
-        <div class="row my-5">
-            <div class="col-sm-12 col-md-6 text-md-end">
-                <h2 class="h6">Example 3: Donut</h2>
-                <p>Same component, different data/configuration.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 canvas-col">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h2 class="h6">Donut</h2>
                 <app-chart #donutChart [id]="donutChart.id" [ariaLabel]="donutChart.ariaLabel"></app-chart>
             </div>
-        </div>
-
-        <div class="row my-5">
-            <div class="col-sm-12 col-md-6 text-md-start order-md-2">
-                <h2 class="h6">Example 4: Error Status</h2>
-                <p>For when things go wrong.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 canvas-col">
+            <div class="col-sm-12 col-md-6">
+                <h2 class="h6">Error Status</h2>
                 <app-chart #badChart [id]="badChart.id" [ariaLabel]="badChart.ariaLabel"></app-chart>
             </div>
         </div>
+
+
     </main>
 </body>
 

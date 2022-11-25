@@ -1,15 +1,17 @@
-<app-loading-chart *ngIf="chart.data === undefined && config.status === undefined"></app-loading-chart>
+<div class="chart-container">
 
-<div [ngClass]="{ 'chart-container': config.data !== undefined, 'chart-error': config.status !== 200 }">
-    <canvas [id]="id" [attr.aria-label]="ariaLabel">
+    <app-loading-chart *ngIf="chart.data === undefined && config.status === undefined"></app-loading-chart>
+
+    <canvas [id]="id" [attr.aria-label]="ariaLabel" class="chart-canvas">
         <ng-container *ngIf="chart.data !== undefined">
             {{ chart }}
         </ng-container>
         <h2>{{ ariaLabel }}</h2>
     </canvas>
-</div>
 
-<div class="text-center text-danger" *ngIf="config.status !== 200">
-    <h3 class="h6">{{ config.message }}</h3>
-    <p>{{ config.status}}</p>
+    <div class="text-center text-danger pt-5" *ngIf="config.status !== 200">
+        <h3 class="h6">{{ config.message }}</h3>
+        <p>{{ config.status}}</p>
+    </div>
+
 </div>
