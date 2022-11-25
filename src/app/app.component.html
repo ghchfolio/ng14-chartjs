@@ -18,7 +18,7 @@
             </div>
             <!-- e.g. 1 BAR chart w sales data1 -->
             <div class="col-sm-12 col-md-6 canvas-col">
-                <app-chart #barChart [id]="barChartId" [ariaLabel]="barChartAriaLabel"></app-chart>
+                <app-chart #barChart [id]="barChartConfig.id" [ariaLabel]="barChartConfig.ariaLabel"></app-chart>
             </div>
         </div>
         <!-- <hr> -->
@@ -29,7 +29,7 @@
                 <p>Same component, different data/configuration.</p>
             </div>
             <div class="col-sm-12 col-md-6 order-md-1 canvas-col">
-                <app-chart #lineChart [id]="'lineChart'" [ariaLabel]="'A Sales/Profit comparison chart'"></app-chart>
+                <app-chart #lineChart [id]="lineChartConfig.id" [ariaLabel]="lineChartConfig.ariaLabel"></app-chart>
             </div>
         </div>
         <!-- <hr> -->
@@ -40,7 +40,7 @@
             </div>
             <!-- e.g. 3 BAR chart w sales data1 -->
             <div class="col-sm-12 col-md-6 canvas-col">
-                <app-chart #badDataChart [id]="badDataChartId" [ariaLabel]="badDataChartAriaLabel"></app-chart>
+                <app-chart #badChart [id]="badChart.id" [ariaLabel]="badChart.ariaLabel"></app-chart>
             </div>
         </div>
     </main>

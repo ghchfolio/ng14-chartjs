@@ -1,7 +1,9 @@
 import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './chartjs-helpers';
-export { barChartConfig, lineChartConfig, badDataChartConfig }
+export { barChartConfig, lineChartConfig, badChartConfig }
 
 let barChartConfig: any = {
+    id: 'barChart',
+    ariaLabel: 'A S ales/Profit comparison chart',
     type: 'bar',
     data: {
         labels: [],
@@ -37,6 +39,8 @@ let barChartConfig: any = {
 };
 
 let lineChartConfig: any = {
+    id: 'lineChart',
+    ariaLabel: 'A Sales/Profit comparison chart',
     type: 'line',
     data: {
         labels: [],
@@ -65,7 +69,9 @@ let lineChartConfig: any = {
     }
 };
 
-let badDataChartConfig: any = {
+let badChartConfig: any = {
+    id: 'badChart',
+    ariaLabel: 'A Sales/Profit comparison chart',
     type: 'bar',
     data: {
         labels: [],

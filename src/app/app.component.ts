@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
-import { barChartConfig, lineChartConfig, badDataChartConfig } from './shared/functions/chart-configs';
+import { barChartConfig, lineChartConfig, badChartConfig } from './shared/functions/chart-configs';
 
 @Component({
     selector: 'app-root',
@@ -14,8 +14,6 @@ export class AppComponent {
     // e.g. 1 BAR chart props
     @ViewChild('barChart') barChart?: ChartComponent;
     barChartDataSub = new Subscription();
-    barChartId = 'barChart';
-    barChartAriaLabel = 'A Sales/Profit comparison chart';
     barChartConfig = barChartConfig;
 
     // e.g. 2 LINE chart props
@@ -24,11 +22,9 @@ export class AppComponent {
     lineChartConfig = lineChartConfig;
 
     // e.g. 3 BAD chart props
-    @ViewChild('badDataChart') badDataChart?: ChartComponent;
-    badDataChartSub = new Subscription();
-    badDataChartId = 'badDataChart';
-    badDataChartAriaLabel = 'A bad data chart';
-    badDataChartConfig = badDataChartConfig;
+    @ViewChild('badChart') badChart?: ChartComponent;
+    badChartSub = new Subscription();
+    badChartConfig = badChartConfig;
 
     constructor(private sds: SalesDataService) { }
 
@@ -58,21 +54,21 @@ export class AppComponent {
             });
 
         // e.g. 3 BAD chart sub
-        this.badDataChartSub = this.sds.getBadData()
+        this.badChartSub = this.sds.getBadData()
             .subscribe({
                 next: (res: any) => {
                     if (res.sales !== undefined) {
-                        this.badDataChartConfig.data.labels = [...res.dates];
-                        this.badDataChart?.createChart(this.badDataChartConfig);
+                        this.badChartConfig.data.labels = [...res.dates];
+                        this.badChart?.createChart(this.badChartConfig);
                     }
                 },
-                error: error => this.badDataChart?.createChart(error)
+                error: error => this.badChart?.createChart(error)
             });
     }
 
     ngOnDestroy() {
         this.barChartDataSub.unsubscribe();
         this.lineChartDataSub.unsubscribe();
-        this.badDataChartSub.unsubscribe();
+        this.badChartSub.unsubscribe();
     }
 }
