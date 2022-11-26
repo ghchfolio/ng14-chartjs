@@ -1,6 +1,7 @@
 import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './chartjs-helpers';
 export { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig }
 
+// e.g. 1 BAR
 let barChartConfig: any = {
     id: 'barChart',
     ariaLabel: 'A S ales/Profit comparison chart',
@@ -37,6 +38,7 @@ let barChartConfig: any = {
     }
 };
 
+// e.g. 2 LINE
 let lineChartConfig: any = {
     id: 'lineChart',
     ariaLabel: 'A Sales/Profit comparison chart',
@@ -50,7 +52,7 @@ let lineChartConfig: any = {
                     '30', '50', '400', '791',
                     '192', '57', '3', '76'
                 ],
-                backgroundColor: 'yellow'
+                backgroundColor: '#6699ff'
             },
             {
                 label: "Profit",
@@ -68,11 +70,7 @@ let lineChartConfig: any = {
     }
 };
 
-let badChartConfig: any = {
-    id: 'badChart',
-    ariaLabel: 'A BAD chart'
-};
-
+// e.g. 3 DONUT
 let donutChartConfig: any = {
     id: 'donutChart',
     ariaLabel: 'A DONUT chart',
@@ -100,3 +98,9 @@ let donutChartConfig: any = {
         }
     },
 }
+
+// e.g. 4 BAD
+let badChartConfig: any = {
+    id: 'badChart',
+    ariaLabel: 'A BAD chart'
+};
