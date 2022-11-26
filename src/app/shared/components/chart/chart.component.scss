@@ -1,5 +1,5 @@
 .chart-container {
-    // position: relative;
+    border: 2px solid transparent;
     max-height: 20rem;
     min-height: 20rem;
     background-color: #fff;
@@ -27,4 +27,8 @@
             margin: 0;
         }
     }
+}
+
+.chart-container-error {
+    border: 2px solid red;
 }

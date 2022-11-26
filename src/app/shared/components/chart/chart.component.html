@@ -1,4 +1,4 @@
-<div class="chart-container">
+<div class="chart-container" [ngClass]="{'chart-container-error': config.status !== undefined}">
 
     <app-loading-chart *ngIf="chart.data === undefined && config.status === undefined"></app-loading-chart>
 
