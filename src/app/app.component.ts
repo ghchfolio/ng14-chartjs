@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { map, Subscription, timer } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
 import { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig } from './shared/functions/chart-configs';
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     @ViewChild('badChart') badChart?: ChartComponent;
     badChartSub = new Subscription();
     badChartConfig = badChartConfig;
+    timerSub = new Subscription();
 
     constructor(private sds: SalesDataService) { }
 
@@ -71,6 +72,14 @@ export class AppComponent implements OnInit {
             });
 
         // e.g. 4 BAD chart sub
+        this.timerSub = timer(4000)
+            .pipe(
+                map(() => this.getBadData())
+            )
+            .subscribe();
+    }
+
+    private getBadData() {
         this.badChartSub = this.sds.getBadData()
             .subscribe({
                 next: (res: any) => {
@@ -80,13 +89,14 @@ export class AppComponent implements OnInit {
                     }
                 },
                 error: error => this.badChart?.createChart(error)
-            });
+            })
     }
 
     ngOnDestroy() {
         this.barChartDataSub.unsubscribe();
         this.lineChartDataSub.unsubscribe();
         this.donutChartDataSub.unsubscribe();
+        this.timerSub.unsubscribe();
         this.badChartSub.unsubscribe();
     }
 }
