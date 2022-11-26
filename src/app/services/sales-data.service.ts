@@ -71,7 +71,7 @@ export class SalesDataService {
                     return throwError(() => {
                         switch (error.status) {
                             case 404: {
-                                return { status: error.status, message: 'Chart Data Not Found' };
+                                return { status: error.status, message: 'Chart Data Unavailable' };
                                 // return `Not Found: ${error.status}`;
                             }
                             case 403: {
