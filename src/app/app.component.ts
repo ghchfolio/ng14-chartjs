@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
@@ -9,7 +9,7 @@ import { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig } fro
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     // e.g. 1 BAR chart props
     @ViewChild('barChart') barChart?: ChartComponent;
@@ -33,7 +33,7 @@ export class AppComponent {
 
     constructor(private sds: SalesDataService) { }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         // e.g. 1 BAR chart sub
         this.barChartDataSub = this.sds.barChartData$
             .subscribe({
@@ -81,9 +81,6 @@ export class AppComponent {
                 },
                 error: error => this.badChart?.createChart(error)
             });
-
-
-
     }
 
     ngOnDestroy() {
