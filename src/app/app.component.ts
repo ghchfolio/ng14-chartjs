@@ -73,10 +73,7 @@ export class AppComponent implements OnInit {
 
         // e.g. 4 BAD chart sub
         this.timerSub = timer(4000)
-            .pipe(
-                map(() => this.getBadData())
-            )
-            .subscribe();
+            .subscribe(() => this.getBadData());
     }
 
     private getBadData() {
@@ -89,7 +86,7 @@ export class AppComponent implements OnInit {
                     }
                 },
                 error: error => this.badChart?.createChart(error)
-            })
+            });
     }
 
     ngOnDestroy() {
