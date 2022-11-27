@@ -56,3 +56,22 @@ export function CreateReverseDiagonalPattern(fgColor = 'gray', bgColor = 'darkgr
 
     return 'lightblue';
 }
+
+export function CreateGradientPattern(top = 'white', bottom = 'red') {
+    const canvasEl = document.createElement('canvas');
+    const canvasH = 400;
+    canvasEl.height = canvasH;
+
+    let c = canvasEl.getContext('2d');
+
+    if (c !== null) {
+        let gradient = c.createLinearGradient(0, 0, 0, canvasH);
+        gradient.addColorStop(0, top);
+        gradient.addColorStop(1, bottom);
+        c.fillStyle = gradient;
+        c.fillRect(0, 0, 0, 400);
+        return gradient;
+    }
+
+    return 'lightblue';
+}

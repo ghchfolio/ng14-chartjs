@@ -1,4 +1,4 @@
-import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './chartjs-helpers';
+import { CreateDiagonalPattern, CreateReverseDiagonalPattern, CreateGradientPattern } from './chartjs-helpers';
 export { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig }
 
 // e.g. 1 BAR
@@ -15,7 +15,7 @@ let barChartConfig: any = {
                     '467', '576', '572', '79',
                     '92', '574', '573', '576'
                 ],
-                backgroundColor: CreateDiagonalPattern('red', 'pink'),
+                backgroundColor: CreateGradientPattern('pink', 'red'),
                 borderWidth: 2,
                 borderColor: 'red'
             },
@@ -25,7 +25,7 @@ let barChartConfig: any = {
                     '542', '542', '536', '327',
                     '17', '0.00', '538', '541'
                 ],
-                backgroundColor: CreateReverseDiagonalPattern('green', 'lightgreen'),
+                backgroundColor: CreateDiagonalPattern('green', 'lightgreen'),
                 borderWidth: 2,
                 borderColor: 'green',
                 borderRadius: 5,
@@ -122,7 +122,7 @@ let donutChartConfig: any = {
             {
                 label: 'Dataset 1',
                 data: [12, 77, 29, 99, 4],
-                backgroundColor: ['#ff6666', 'Orange', '#ff66ff', '#66ff66', '#6699ff'],
+                backgroundColor: ['#ff6666', CreateGradientPattern('white', 'orange'), '#ff66ff', CreateReverseDiagonalPattern('green', 'lightgreen'), '#6699ff'],
             }
         ]
     },
