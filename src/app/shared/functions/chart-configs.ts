@@ -4,7 +4,7 @@ export { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, 
 // e.g. 1 BAR
 let barChartConfig: any = {
     id: 'barChart',
-    ariaLabel: 'A S ales/Profit comparison chart',
+    ariaLabel: 'A Sales/Profit comparison chart',
     type: 'bar',
     data: {
         labels: [],
