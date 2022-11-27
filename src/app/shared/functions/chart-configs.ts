@@ -1,5 +1,5 @@
 import { CreateDiagonalPattern, CreateReverseDiagonalPattern } from './chartjs-helpers';
-export { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig }
+export { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig }
 
 // e.g. 1 BAR
 let barChartConfig: any = {
@@ -38,7 +38,48 @@ let barChartConfig: any = {
     }
 };
 
-// e.g. 2 LINE
+// e.g. 2 HORIZ. STACKED
+let stackedChartConfig: any = {
+    id: 'stackedChart',
+    ariaLabel: 'A Sales/Profit comparison chart',
+    type: 'bar',
+    data: {
+        labels: ['Sales', 'Profit'],
+        datasets: [
+            {
+                label: "Sales",
+                data: [
+                    '467', '300', '250', '379',
+                    '92', '30', '260', '240'
+                ],
+                backgroundColor: 'pink',
+            },
+            {
+                label: "Profit",
+                data: [
+                    '567', '400', '536', '327',
+                    '217', '230', '538', '250'
+                ],
+                backgroundColor: 'lightgreen',
+            }
+        ]
+    },
+    options: {
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        scales: {
+            // x: {
+            //     stacked: true,
+            // },
+            y: {
+                stacked: true
+            }
+        }
+        // resizeDelay: 250
+    }
+};
+
+// e.g. 3 LINE
 let lineChartConfig: any = {
     id: 'lineChart',
     ariaLabel: 'A Sales/Profit comparison chart',
@@ -70,7 +111,7 @@ let lineChartConfig: any = {
     }
 };
 
-// e.g. 3 DONUT
+// e.g. 4 DONUT
 let donutChartConfig: any = {
     id: 'donutChart',
     ariaLabel: 'A DONUT chart',
@@ -99,7 +140,7 @@ let donutChartConfig: any = {
     },
 }
 
-// e.g. 4 BAD
+// e.g. 5 BAD
 let badChartConfig: any = {
     id: 'badChart',
     ariaLabel: 'A BAD chart'

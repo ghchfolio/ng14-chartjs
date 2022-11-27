@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class SalesDataService {
-
     // e.g. 1 BAR chart data
     private barChartDataSource: any = {};
     private barChartDataSourceSubj = new BehaviorSubject<any>(this.barChartDataSource);
@@ -21,6 +20,10 @@ export class SalesDataService {
     private donutChartDataSource: any = {};
     private donutChartDataSourceSubj = new BehaviorSubject<any>(this.donutChartDataSource);
     donutChartData$ = this.donutChartDataSourceSubj.asObservable();
+
+    private stackedChartDataSource: any = {};
+    private stackedChartDataSourceSubj = new BehaviorSubject<any>(this.stackedChartDataSource);
+    stackedChartData$ = this.stackedChartDataSourceSubj.asObservable();
 
     constructor(private http: HttpClient) {
         this.getFakeData();
@@ -41,7 +44,21 @@ export class SalesDataService {
             });
         }, 1000);
 
-        // e.g.2 send LINE chart data after 2 secs.
+        // e.g.2 send HORIZ. STACKED chart data after 2 sec.
+        setTimeout(() => {
+            this.stackedChartDataSourceSubj.next({
+                sales: [
+                    '467', '576', '572', '79',
+                    '92', '574', '573', '576'
+                ],
+                dates: [
+                    '2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
+                    '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',
+                ]
+            });
+        }, 2000);
+
+        // e.g.3 send LINE chart data after 2 secs.
         setTimeout(() => {
             this.lineChartDataSourceSubj.next({
                 sales: [
@@ -53,16 +70,17 @@ export class SalesDataService {
                     '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',
                 ]
             });
-        }, 2000);
+        }, 3000);
 
-        // e.g.3 send BAR chart data after 3 secs.
+        // e.g.4 send BAR chart data after 3 secs.
         setTimeout(() => {
             this.donutChartDataSourceSubj.next({
                 sales: [12, 77, 29, 99, 4],
             });
-        }, 3000);
+        }, 4000);
     }
 
+    // e.g. 5 bad chart data
     getBadData() {
         return this.http
             .get('https://jsonplaceholder.typicode.com/bad-url-example/1')
@@ -91,5 +109,4 @@ export class SalesDataService {
                 })
             )
     }
-
 }

@@ -18,19 +18,31 @@
                 <app-chart #barChart [id]="barChartConfig.id" [ariaLabel]="barChartConfig.ariaLabel"></app-chart>
             </div>
             <div class="col-sm-12 col-md-6">
-                <h2 class="h6">Line</h2>
-                <app-chart #lineChart [id]="lineChartConfig.id" [ariaLabel]="lineChartConfig.ariaLabel"></app-chart>
+                <h2 class="h6">Stacked</h2>
+                <app-chart #stackedChart [id]="stackedChart.id" [ariaLabel]="stackedChart.ariaLabel"></app-chart>
+
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-12 col-md-6">
+                <h2 class="h6">Line</h2>
+                <app-chart #lineChart [id]="lineChartConfig.id" [ariaLabel]="lineChartConfig.ariaLabel"></app-chart>
+            </div>
+            <div class="col-sm-12 col-md-6">
                 <h2 class="h6">Donut</h2>
                 <app-chart #donutChart [id]="donutChart.id" [ariaLabel]="donutChart.ariaLabel"></app-chart>
             </div>
+        </div>
+
+        <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h2 class="h6">Status</h2>
                 <app-chart #badChart [id]="badChart.id" [ariaLabel]="badChart.ariaLabel"></app-chart>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <!-- <h2 class="h6">Status</h2>
+                <app-chart #badChart [id]="badChart.id" [ariaLabel]="badChart.ariaLabel"></app-chart> -->
             </div>
         </div>
     </main>

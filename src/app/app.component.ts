@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { map, Subscription, timer } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
-import { barChartConfig, lineChartConfig, badChartConfig, donutChartConfig } from './shared/functions/chart-configs';
+import { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig } from './shared/functions/chart-configs';
 
 @Component({
     selector: 'app-root',
@@ -16,17 +16,22 @@ export class AppComponent implements OnInit {
     barChartDataSub = new Subscription();
     barChartConfig = barChartConfig;
 
-    // e.g. 2 LINE chart props
+    // e.g. 2 HORIZ. STACKED chart props
+    @ViewChild('stackedChart') stackedChart?: ChartComponent;
+    stackedChartDataSub = new Subscription();
+    stackedChartConfig = stackedChartConfig;
+
+    // e.g. 3 LINE chart props
     @ViewChild('lineChart') lineChart?: ChartComponent;
     lineChartDataSub = new Subscription();
     lineChartConfig = lineChartConfig;
 
-    // e.g. 3 DONUT chart props
+    // e.g. 4 DONUT chart props
     @ViewChild('donutChart') donutChart?: ChartComponent;
     donutChartDataSub = new Subscription();
     donutChartConfig = donutChartConfig;
 
-    // e.g. 4 BAD chart props
+    // e.g. 5 BAD chart props
     @ViewChild('badChart') badChart?: ChartComponent;
     badChartSub = new Subscription();
     badChartConfig = badChartConfig;
@@ -47,7 +52,19 @@ export class AppComponent implements OnInit {
                 error: error => this.barChart?.createChart(error)
             });
 
-        // e.g. 2 LINE chart sub
+        // e.g. 2 HORIZ. STACKED chart sub
+        this.stackedChartDataSub = this.sds.stackedChartData$
+            .subscribe({
+                next: (res: any) => {
+                    if (res.sales !== undefined) {
+                        this.stackedChartConfig.data.labels = [...res.sales];
+                        this.stackedChart?.createChart(this.stackedChartConfig);
+                    }
+                },
+                error: error => this.stackedChart?.createChart(error)
+            });
+
+        // e.g. 3 LINE chart sub
         this.lineChartDataSub = this.sds.lineChartData$
             .subscribe({
                 next: (res: any) => {
@@ -59,7 +76,7 @@ export class AppComponent implements OnInit {
                 error: error => this.lineChart?.createChart(error)
             });
 
-        // e.g. 3 DONUT chart sub
+        // e.g. 4 DONUT chart sub
         this.donutChartDataSub = this.sds.donutChartData$
             .subscribe({
                 next: (res: any) => {
@@ -71,8 +88,8 @@ export class AppComponent implements OnInit {
                 error: error => this.donutChart?.createChart(error)
             });
 
-        // e.g. 4 BAD chart sub
-        this.timerSub = timer(4000)
+        // e.g. 5 BAD chart sub
+        this.timerSub = timer(5000)
             .subscribe(() => this.getBadData());
     }
 
@@ -91,6 +108,7 @@ export class AppComponent implements OnInit {
 
     ngOnDestroy() {
         this.barChartDataSub.unsubscribe();
+        this.stackedChartDataSub.unsubscribe();
         this.lineChartDataSub.unsubscribe();
         this.donutChartDataSub.unsubscribe();
         this.timerSub.unsubscribe();
