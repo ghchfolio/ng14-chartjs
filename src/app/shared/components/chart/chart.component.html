@@ -1,6 +1,6 @@
-<div class="chart-container" [ngClass]="{'chart-container-error': config.status !== undefined}">
+<div class="chart-container" [ngClass]="{'chart-container-error': error.status !== undefined}">
 
-    <app-loading-chart *ngIf="chart.data === undefined && config.status === undefined"></app-loading-chart>
+    <app-loading-chart *ngIf="chart.data === undefined && error.status === undefined"></app-loading-chart>
 
     <canvas [id]="id" [attr.aria-label]="ariaLabel" class="chart-canvas">
         <ng-container *ngIf="chart.data !== undefined">
@@ -9,9 +9,9 @@
         <h2>{{ ariaLabel }}</h2>
     </canvas>
 
-    <div class="errorBox text-center" *ngIf="config.status !== 200">
-        <h3 class="h5">{{ config.message }}</h3>
-        <p class="display-5">{{ config.status}}</p>
+    <div class="errorBox text-center" *ngIf="error.status !== 200">
+        <h3 class="h5">{{ error.message }}</h3>
+        <p class="display-5">{{ error.status}}</p>
     </div>
 
 </div>

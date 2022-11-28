@@ -13,6 +13,7 @@ export class ChartComponent {
 
     chart: any = {};
     config: any = {};
+    error: any = {};
 
     constructor(private elementRef: ElementRef) { }
 
@@ -21,6 +22,10 @@ export class ChartComponent {
 
         this.config = { ...config };
         if (this.config.data !== undefined) this.chart = new Chart(canvasEl, this.config);
+    }
+
+    showError(error: any) {
+        this.error = error;
     }
 
 }

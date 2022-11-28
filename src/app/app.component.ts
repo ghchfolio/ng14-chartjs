@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
 import { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig } from './shared/functions/chart-configs';
@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
     @ViewChild('badChart') badChart?: ChartComponent;
     badChartSub = new Subscription();
     badChartConfig = badChartConfig;
-    timerSub = new Subscription();
 
     constructor(private sds: SalesDataService) { }
 
@@ -49,7 +48,7 @@ export class AppComponent implements OnInit {
                         this.barChart?.createChart(this.barChartConfig);
                     }
                 },
-                error: error => this.barChart?.createChart(error)
+                error: error => this.barChart?.showError(error)
             });
 
         // e.g. 2 HORIZ. STACKED chart sub
@@ -61,7 +60,7 @@ export class AppComponent implements OnInit {
                         this.stackedChart?.createChart(this.stackedChartConfig);
                     }
                 },
-                error: error => this.stackedChart?.createChart(error)
+                error: error => this.stackedChart?.showError(error)
             });
 
         // e.g. 3 LINE chart sub
@@ -73,7 +72,7 @@ export class AppComponent implements OnInit {
                         this.lineChart?.createChart(this.lineChartConfig);
                     }
                 },
-                error: error => this.lineChart?.createChart(error)
+                error: error => this.lineChart?.showError(error)
             });
 
         // e.g. 4 DONUT chart sub
@@ -85,12 +84,11 @@ export class AppComponent implements OnInit {
                         this.donutChart?.createChart(this.donutChartConfig);
                     }
                 },
-                error: error => this.donutChart?.createChart(error)
+                error: error => this.donutChart?.showError(error)
             });
 
         // e.g. 5 BAD chart sub
-        this.timerSub = timer(5000)
-            .subscribe(() => this.getBadData());
+        setTimeout(() => this.getBadData(), 5000);
     }
 
     private getBadData() {
@@ -102,7 +100,7 @@ export class AppComponent implements OnInit {
                         this.badChart?.createChart(this.badChartConfig);
                     }
                 },
-                error: error => this.badChart?.createChart(error)
+                error: error => this.badChart?.showError(error)
             });
     }
 
@@ -111,7 +109,6 @@ export class AppComponent implements OnInit {
         this.stackedChartDataSub.unsubscribe();
         this.lineChartDataSub.unsubscribe();
         this.donutChartDataSub.unsubscribe();
-        this.timerSub.unsubscribe();
         this.badChartSub.unsubscribe();
     }
 }
