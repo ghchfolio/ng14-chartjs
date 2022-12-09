@@ -42,13 +42,9 @@ export function CreateReverseDiagonalPattern(fgColor = 'gray', bgColor = 'darkgr
         c.strokeStyle = fgColor;
 
         c.beginPath();
-        c.moveTo(0, 10);
-        c.lineTo(10, 0);
-        c.stroke();
-
-        c.beginPath();
         c.moveTo(10, 0);
-        c.lineTo(0, 10);
+        c.lineTo(10, 0);
+        c.scale(-1, 1);
         c.stroke();
 
         return c.createPattern(pattern, 'repeat');
