@@ -104,30 +104,31 @@ export class AppComponent implements OnInit {
             });
     }
 
-    goToPage(obj: any) {
+    goToPage(chartElement: { index: number; }) {
         let url: string | undefined;
 
-        switch (obj.index) {
+        // TODO use if by chartType ..., and move switch statements to ext file
+        switch (chartElement.index) {
             case 7:
-                url = 'https://www.facebook.com';
+                url = 'https://www.microsoft.com';
                 break;
             case 6:
-                url = 'https://www.oracle.com';
-                break;
-            case 5:
-                url = 'https://www.hotmail.com';
-                break;
-            case 4:
-                url = 'https://www.twitter.com';
-                break;
-            case 3:
-                url = 'https://www.amazon.com';
-                break;
-            case 2:
                 url = 'https://www.w3schools.com';
                 break;
-            case 1:
+            case 5:
+                url = 'https://angular.io';
+                break;
+            case 4:
+                url = 'https://github.com';
+                break;
+            case 3:
+                url = 'https://www.chartjs.org';
+                break;
+            case 2:
                 url = 'https://www.istation.com';
+                break;
+            case 1:
+                url = 'https://www.youtube.com';
                 break;
             case 0:
                 url = 'https://www.google.com';
@@ -137,7 +138,7 @@ export class AppComponent implements OnInit {
                 break;
         }
 
-        if (url !== undefined) window.open(url, '_blank', '')
+        if (url !== undefined) window.open(url, '_blank', '');
     }
 
     ngOnDestroy() {

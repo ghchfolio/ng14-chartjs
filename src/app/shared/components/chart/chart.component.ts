@@ -38,7 +38,6 @@ export class ChartComponent {
                         const value = this.chart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
                         // console.log(firstPoint, label, value);
                         this.goToPage.emit(firstPoint);
-
                     }
                 });
         }
