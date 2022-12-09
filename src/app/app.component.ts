@@ -104,6 +104,42 @@ export class AppComponent implements OnInit {
             });
     }
 
+    goToPage(obj: any) {
+        let url: string | undefined;
+
+        switch (obj.index) {
+            case 7:
+                url = 'https://www.facebook.com';
+                break;
+            case 6:
+                url = 'https://www.oracle.com';
+                break;
+            case 5:
+                url = 'https://www.hotmail.com';
+                break;
+            case 4:
+                url = 'https://www.twitter.com';
+                break;
+            case 3:
+                url = 'https://www.amazon.com';
+                break;
+            case 2:
+                url = 'https://www.w3schools.com';
+                break;
+            case 1:
+                url = 'https://www.istation.com';
+                break;
+            case 0:
+                url = 'https://www.google.com';
+                break;
+            default:
+                url = 'https://www.google.com';
+                break;
+        }
+
+        if (url !== undefined) window.open(url, '_blank', '')
+    }
+
     ngOnDestroy() {
         this.barChartDataSub.unsubscribe();
         this.stackedChartDataSub.unsubscribe();

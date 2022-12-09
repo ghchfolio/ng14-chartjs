@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { Chart } from 'node_modules/chart.js/auto';
 import { fromEvent, Subscription } from 'rxjs';
 
@@ -11,6 +11,7 @@ export class ChartComponent {
 
     @Input() id: any;
     @Input() ariaLabel: any;
+    @Output() goToPage = new EventEmitter();
 
     chart: any = {};
     config: any = {};
@@ -35,7 +36,9 @@ export class ChartComponent {
                         const firstPoint = points[0];
                         const label = this.chart.data.labels[firstPoint.index];
                         const value = this.chart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
-                        console.log(firstPoint, label, value);
+                        // console.log(firstPoint, label, value);
+                        this.goToPage.emit(firstPoint);
+
                     }
                 });
         }
