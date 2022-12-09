@@ -15,30 +15,30 @@ export class ChartComponent {
     chart: any = {};
     config: any = {};
     error: any = {};
-    canvasEl: any;
-    ctx: any;
+
     onClickSub: Subscription = new Subscription();
 
     constructor(private elementRef: ElementRef) { }
 
     createChart(config: any) {
-        this.canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
-        this.ctx = this.canvasEl?.getContext('2d');
         this.config = config;
+        const canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
+        const ctx = canvasEl?.getContext('2d');
 
-        if (this.config.data !== undefined) this.chart = new Chart(this.ctx, this.config);
+        if (this.config.data !== undefined) {
+            this.chart = new Chart(ctx, this.config);
+            this.onClickSub = fromEvent(canvasEl, 'click')
+                .subscribe(Event => {
+                    const points = this.chart.getElementsAtEventForMode(Event, 'nearest', { intersect: true }, true);
 
-        this.onClickSub = fromEvent(this.canvasEl, 'click')
-            .subscribe((val: any) => {
-                let evt = event;
-                const points = this.chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
-                if (points.length) {
-                    const firstPoint = points[0];
-                    const label = this.chart.data.labels[firstPoint.index];
-                    const value = this.chart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
-                    console.log(firstPoint, label, value)
-                }
-            })
+                    if (points.length) {
+                        const firstPoint = points[0];
+                        const label = this.chart.data.labels[firstPoint.index];
+                        const value = this.chart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+                        console.log(firstPoint, label, value);
+                    }
+                });
+        }
     }
 
     showError(error: any) {
