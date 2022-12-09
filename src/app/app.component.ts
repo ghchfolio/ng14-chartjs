@@ -119,22 +119,22 @@ export class AppComponent implements OnInit {
                 url = 'https://angular.io';
                 break;
             case 4:
-                url = 'https://github.com';
-                break;
-            case 3:
-                url = 'https://www.chartjs.org';
-                break;
-            case 2:
-                url = 'https://www.istation.com';
-                break;
-            case 1:
                 url = 'https://www.youtube.com';
                 break;
-            case 0:
+            case 3:
                 url = 'https://www.google.com';
                 break;
+            case 2:
+                url = 'https://github.com';
+                break;
+            case 1:
+                url = 'https://www.istation.com';
+                break;
+            case 0:
+                url = 'https://www.chartjs.org';
+                break;
             default:
-                url = 'https://www.google.com';
+                url = 'https://www.chartjs.org';
                 break;
         }
 
