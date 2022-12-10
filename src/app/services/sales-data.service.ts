@@ -11,19 +11,20 @@ export class SalesDataService {
     private barChartDataSourceSubj = new BehaviorSubject<any>(this.barChartDataSource);
     barChartData$ = this.barChartDataSourceSubj.asObservable();
 
-    // e.g. 2 LINE chart data
+    // e.g. 2 STACKED chart data
+    private stackedChartDataSource: any = {};
+    private stackedChartDataSourceSubj = new BehaviorSubject<any>(this.stackedChartDataSource);
+    stackedChartData$ = this.stackedChartDataSourceSubj.asObservable();
+
+    // e.g. 3 LINE chart data
     private lineChartDataSource: any = {};
     private lineChartDataSourceSubj = new BehaviorSubject<any>(this.lineChartDataSource);
     lineChartData$ = this.lineChartDataSourceSubj.asObservable();
 
-    // e.g. 4 LINE chart data
+    // e.g. 4 DONUT chart data
     private donutChartDataSource: any = {};
     private donutChartDataSourceSubj = new BehaviorSubject<any>(this.donutChartDataSource);
     donutChartData$ = this.donutChartDataSourceSubj.asObservable();
-
-    private stackedChartDataSource: any = {};
-    private stackedChartDataSourceSubj = new BehaviorSubject<any>(this.stackedChartDataSource);
-    stackedChartData$ = this.stackedChartDataSourceSubj.asObservable();
 
     constructor(private http: HttpClient) {
         this.getFakeData();
@@ -44,7 +45,7 @@ export class SalesDataService {
             });
         }, 1000);
 
-        // e.g.2 send HORIZ. STACKED chart data after 2 sec.
+        // e.g.2 send STACKED chart data after 2 sec.
         setTimeout(() => {
             this.stackedChartDataSourceSubj.next({
                 sales: [
@@ -72,7 +73,7 @@ export class SalesDataService {
             });
         }, 3000);
 
-        // e.g.4 send BAR chart data after 3 secs.
+        // e.g.4 send DONUT chart data after 3 secs.
         setTimeout(() => {
             this.donutChartDataSourceSubj.next({
                 sales: [12, 77, 29, 99, 4],
@@ -80,7 +81,7 @@ export class SalesDataService {
         }, 4000);
     }
 
-    // e.g. 5 bad chart data
+    // e.g. 5 BAD chart data
     getBadData() {
         return this.http
             .get('https://jsonplaceholder.typicode.com/bad-url-example/1')
