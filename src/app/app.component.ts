@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SalesDataService } from './services/sales-data.service';
 import { ChartComponent } from './shared/components/chart/chart.component';
-import { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig } from './shared/functions/chart-configs';
+import { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig } from './shared/helpers/chart-configs';
 
 @Component({
     selector: 'app-root',

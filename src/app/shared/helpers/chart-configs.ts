@@ -1,5 +1,5 @@
-import { CreateDiagonalPattern, CreateReverseDiagonalPattern, CreateGradientPattern } from './chartjs-helpers';
-export { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig }
+import { CreateDiagonalPattern, CreateReverseDiagonalPattern, CreateGradientPattern } from '../functions/chartjs-backgrounds';
+export { barChartConfig, stackedChartConfig, lineChartConfig, donutChartConfig, badChartConfig };
 
 // e.g. 1 BAR
 let barChartConfig: any = {
