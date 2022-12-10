@@ -45,10 +45,10 @@ export class AppComponent implements OnInit {
                 next: (res: any) => {
                     if (res.sales !== undefined) {
                         this.barChartConfig.data.labels = [...res.dates];
-                        this.barChart?.createChart(this.barChartConfig);
+                        this.barChart?.onSuccess(this.barChartConfig);
                     }
                 },
-                error: error => this.barChart?.showError(error)
+                error: error => this.barChart?.onError(error)
             });
 
         // e.g. 2 HORIZ. STACKED chart sub
@@ -57,10 +57,10 @@ export class AppComponent implements OnInit {
                 next: (res: any) => {
                     if (res.sales !== undefined) {
                         this.stackedChartConfig.data.labels = [...res.sales];
-                        this.stackedChart?.createChart(this.stackedChartConfig);
+                        this.stackedChart?.onSuccess(this.stackedChartConfig);
                     }
                 },
-                error: error => this.stackedChart?.showError(error)
+                error: error => this.stackedChart?.onError(error)
             });
 
         // e.g. 3 LINE chart sub
@@ -69,10 +69,10 @@ export class AppComponent implements OnInit {
                 next: (res: any) => {
                     if (res.sales !== undefined) {
                         this.lineChartConfig.data.labels = [...res.dates];
-                        this.lineChart?.createChart(this.lineChartConfig);
+                        this.lineChart?.onSuccess(this.lineChartConfig);
                     }
                 },
-                error: error => this.lineChart?.showError(error)
+                error: error => this.lineChart?.onError(error)
             });
 
         // e.g. 4 DONUT chart sub
@@ -81,10 +81,10 @@ export class AppComponent implements OnInit {
                 next: (res: any) => {
                     if (res.sales !== undefined) {
                         this.donutChartConfig.data.labels = [...res.sales];
-                        this.donutChart?.createChart(this.donutChartConfig);
+                        this.donutChart?.onSuccess(this.donutChartConfig);
                     }
                 },
-                error: error => this.donutChart?.showError(error)
+                error: error => this.donutChart?.onError(error)
             });
 
         // e.g. 5 BAD chart sub
@@ -97,10 +97,10 @@ export class AppComponent implements OnInit {
                 next: (res: any) => {
                     if (res.sales !== undefined) {
                         this.badChartConfig.data.labels = [...res.dates];
-                        this.badChart?.createChart(this.badChartConfig);
+                        this.badChart?.onSuccess(this.badChartConfig);
                     }
                 },
-                error: error => this.badChart?.showError(error)
+                error: error => this.badChart?.onError(error)
             });
     }
 

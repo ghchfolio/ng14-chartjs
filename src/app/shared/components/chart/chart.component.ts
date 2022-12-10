@@ -21,13 +21,17 @@ export class ChartComponent {
 
     constructor(private elementRef: ElementRef) { }
 
-    createChart(config: any) {
+    onSuccess(config: any) {
         this.config = config;
         const canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
         const ctx = canvasEl?.getContext('2d');
 
         if (this.config.data !== undefined) {
+
+            // create chart
             this.chart = new Chart(ctx, this.config);
+
+            // sub to click event
             this.onClickSub = fromEvent(canvasEl, 'click')
                 .subscribe(Event => {
                     const points = this.chart.getElementsAtEventForMode(Event, 'nearest', { intersect: true }, true);
@@ -43,7 +47,7 @@ export class ChartComponent {
         }
     }
 
-    showError(error: any) {
+    onError(error: any) {
         this.error = error;
     }
 
