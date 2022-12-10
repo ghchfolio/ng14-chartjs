@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { Chart } from 'node_modules/chart.js/auto';
+import { Chart, ChartItem } from 'node_modules/chart.js/auto';
+import { ChartError } from 'src/app/interfaces/chart-error';
 import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
@@ -9,13 +10,13 @@ import { fromEvent, Subscription } from 'rxjs';
 })
 export class ChartComponent {
 
-    @Input() id: any;
-    @Input() ariaLabel: any;
+    @Input() id?: string;
+    @Input() ariaLabel?: string;
     @Output() goToPage = new EventEmitter();
 
     chart: any = {};
     config: any = {};
-    error: any = {};
+    error?: ChartError;
 
     onClickSub: Subscription = new Subscription();
 
@@ -23,8 +24,8 @@ export class ChartComponent {
 
     onSuccess(config: any) {
         this.config = config;
-        const canvasEl = this.elementRef.nativeElement.querySelector(`#${this.id}`);
-        const ctx = canvasEl?.getContext('2d');
+        const canvasEl: HTMLCanvasElement = this.elementRef.nativeElement.querySelector(`#${this.id}`);
+        const ctx = canvasEl?.getContext('2d') as ChartItem;
 
         if (this.config.data !== undefined) {
 
@@ -47,7 +48,7 @@ export class ChartComponent {
         }
     }
 
-    onError(error: any) {
+    onError(error: ChartError) {
         this.error = error;
     }
 
