@@ -1,17 +1,24 @@
-<div class="chart-container" [ngClass]="{ 'chart-container-error': error !== undefined }">
+<div style="display:flex; border: 1px solid red;">
+    <div style="width:94.5%;" class="chart-container" [ngClass]="{ 'chart-container-error': error !== undefined }">
 
-    <app-loading-chart *ngIf="chart.data === undefined && error === undefined"></app-loading-chart>
+        <app-loading-chart *ngIf="chart.data === undefined && error === undefined"></app-loading-chart>
 
-    <canvas [id]="id" [attr.aria-label]="ariaLabel" class="chart-canvas">
-        <ng-container *ngIf="chart.data !== undefined">
-            {{ chart }}
-        </ng-container>
-        <h2>{{ ariaLabel }}</h2>
-    </canvas>
+        <canvas [id]="id" [attr.aria-label]="ariaLabel" class="chart-canvas">
+            <ng-container *ngIf="chart.data !== undefined">
+                {{ chart }}
+            </ng-container>
+            <h2>{{ ariaLabel }}</h2>
+        </canvas>
 
-    <div class="errorBox text-center" *ngIf="error">
-        <h3 class="h5">{{ error.message }}</h3>
-        <p class="display-5">{{ error.status }}</p>
+        <div class="errorBox text-center" *ngIf="error">
+            <h3 class="h5">{{ error.message }}</h3>
+            <p class="display-5">{{ error.status }}</p>
+        </div>
+
     </div>
 
+    <div>
+        xx
+        <button>show</button>
+    </div>
 </div>
