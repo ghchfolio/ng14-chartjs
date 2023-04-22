@@ -14,10 +14,12 @@ export class ChartComponent {
     @Input() ariaLabel?: string;
     @Output() goToPage = new EventEmitter();
 
+    isHelpOpen = false;
+    helpBtnText = 'Show';
+
     chart: any = {};
     config: any = {};
     error?: ChartError;
-
     onClickSub: Subscription = new Subscription();
 
     constructor(private elementRef: ElementRef) { }
@@ -52,6 +54,15 @@ export class ChartComponent {
         this.error = error;
     }
 
+    onToggleHelp(e: any) {
+        this.isHelpOpen = !this.isHelpOpen;
+        if (this.isHelpOpen === true) {
+            this.helpBtnText = 'Hide';
+        } else {
+            this.helpBtnText = 'Show';
+        }
+        // this.toggleHelp(e, this.id, this.isHelpOpen);
+    }
     onDestroy() {
         this.onClickSub.unsubscribe();
     }

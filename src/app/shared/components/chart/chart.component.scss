@@ -4,7 +4,7 @@
     background-color: #fff;
     box-shadow: 0px 0px 40px #fff;
     border-radius: 7px;
-    margin: 1rem 0 3rem 0;
+    // margin: 1rem 0 3rem 0;
     padding: 0.5rem;
     display: flex;
     justify-content: center;
@@ -32,4 +32,8 @@
     border: 2px solid #aaa;
     box-shadow: none;
     color: #aaa;
+}
+
+.open {
+    width: 84.5% !important;
 }
