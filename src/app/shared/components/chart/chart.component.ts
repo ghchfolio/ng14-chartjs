@@ -61,8 +61,8 @@ export class ChartComponent {
         } else {
             this.helpBtnText = 'Show';
         }
-        // this.toggleHelp(e, this.id, this.isHelpOpen);
     }
+
     onDestroy() {
         this.onClickSub.unsubscribe();
     }
@@ -70,3 +70,8 @@ export class ChartComponent {
     // https://www.chartjs.org/docs/latest/developers/api.html
     // https://www.youtube.com/watch?v=dIFLeum2WQY&list=PLnuit5448DojGFLD7hvAffu6jYBQZerhi&index=1&t=2s
 }
+// DONE add side slideout panel
+// DONE add working taggle button
+// TODO get window with (may do flip card)
+// TODO animate slideout
+// TODO fade in text?
