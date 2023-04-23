@@ -1,6 +1,5 @@
 <div style="display:flex; border: 1px solid red;">
-    <div style="width:94.5%;" class="chart-container"
-        [ngClass]="{ 'chart-container-error': error !== undefined, 'open':isHelpOpen }">
+    <div class="chart-container" [ngClass]="{ 'chart-container-error': error !== undefined, 'open':isHelpOpen }">
 
         <app-loading-chart *ngIf="chart.data === undefined && error === undefined"></app-loading-chart>
 
@@ -18,10 +17,13 @@
 
     </div>
 
-    <div class="chart-help" style="display:flex; flex-direction: column; justify-content:space-between;">
+    <div class="chart-help" style="display:flex; flex-direction: column; justify-content:space-between;"
+        [ngClass]="{'open':isHelpOpen}">
         <h2 class="h5">Help</h2>
-        <div>
-            <p>x</p>
+        <div style="overflow-y: auto; max-height: 300px;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, sit.</p>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam sit blanditiis temporibus sapiente velit,
+                obcaecati at dolorum amet et eius inventore laudantium deleniti facere totam!</p> -->
         </div>
         <button (click)="onToggleHelp($event)">{{helpBtnText}}</button>
     </div>

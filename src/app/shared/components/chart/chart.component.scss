@@ -1,3 +1,4 @@
+// chart container
 .chart-container {
     border: 2px solid transparent;
     height: 25rem;
@@ -9,6 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    transition: all .25s linear;
 
     .chart-canvas {
         display: none;
@@ -26,14 +29,34 @@
             margin: 0;
         }
     }
+
 }
 
+.chart-container.open {
+    width: 80% !important;
+}
+
+// chart help
+.chart-help {
+    margin-left: 1rem;
+    width: 10%;
+
+    p {
+        display: none;
+    }
+}
+
+.chart-help.open {
+    width: 20% !important;
+
+    p {
+        display: block !important;
+    }
+}
+
+// chart error
 .chart-container-error {
     border: 2px solid #aaa;
     box-shadow: none;
     color: #aaa;
-}
-
-.open {
-    width: 84.5% !important;
 }
